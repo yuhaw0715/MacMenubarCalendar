@@ -1,0 +1,4 @@
+/* InfoPlist.strings (Traditional Chinese) */
+"CFBundleDisplayName" = "Mac Menubar Calendar";
+"CFBundleName" = "Mac Menubar Calendar";
+"NSCalendarsFullAccessUsageDescription" = "Mac Menubar Calendar 需要行事曆存取權限以在選單列中顯示您的近期行程。本 App 嚴格維持唯讀，不會建立、修改或刪除任何行事曆或行程。";

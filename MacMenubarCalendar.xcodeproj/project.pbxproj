@@ -1,0 +1,880 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		110100012C70000100000001 /* MacMenubarCalendarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200012C70000100000001 /* MacMenubarCalendarApp.swift */; };
+		110100022C70000100000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200022C70000100000001 /* AppDelegate.swift */; };
+		110100032C70000100000001 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200032C70000100000001 /* StatusItemController.swift */; };
+		110100042C70000100000001 /* CalendarServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200042C70000100000001 /* CalendarServiceProtocol.swift */; };
+		110100052C70000100000001 /* ClockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200052C70000100000001 /* ClockProtocol.swift */; };
+		110100062C70000100000001 /* PreferencesStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200062C70000100000001 /* PreferencesStoreProtocol.swift */; };
+		110100072C70000100000001 /* LoginItemManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200072C70000100000001 /* LoginItemManaging.swift */; };
+		110100082C70000100000001 /* CalendarOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200082C70000100000001 /* CalendarOpening.swift */; };
+		110100092C70000100000001 /* AuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200092C70000100000001 /* AuthorizationStatus.swift */; };
+		1101000A2C70000100000001 /* AppearanceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102000A2C70000100000001 /* AppearanceMode.swift */; };
+		1101000B2C70000100000001 /* CalendarSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102000B2C70000100000001 /* CalendarSource.swift */; };
+		1101000C2C70000100000001 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102000C2C70000100000001 /* CalendarEvent.swift */; };
+		1101000D2C70000100000001 /* DayCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102000D2C70000100000001 /* DayCellData.swift */; };
+		1101000E2C70000100000001 /* SystemClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102000E2C70000100000001 /* SystemClock.swift */; };
+		1101000F2C70000100000001 /* EventKitCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102000F2C70000100000001 /* EventKitCalendarService.swift */; };
+		110100102C70000100000001 /* AppPreferencesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200102C70000100000001 /* AppPreferencesStore.swift */; };
+		110100112C70000100000001 /* AppLoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200112C70000100000001 /* AppLoginItemManager.swift */; };
+		110100122C70000100000001 /* SystemCalendarOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200122C70000100000001 /* SystemCalendarOpener.swift */; };
+		110100132C70000100000001 /* SystemNotificationWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200132C70000100000001 /* SystemNotificationWatcher.swift */; };
+		110100142C70000100000001 /* CalendarGridCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200142C70000100000001 /* CalendarGridCalculator.swift */; };
+		110100152C70000100000001 /* EventFilterAndSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200152C70000100000001 /* EventFilterAndSorter.swift */; };
+		110100162C70000100000001 /* DayLayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200162C70000100000001 /* DayLayoutEngine.swift */; };
+		1101002A2C70000100000001 /* LunarDateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102002B2C70000100000001 /* LunarDateHelper.swift */; };
+		110100172C70000100000001 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200172C70000100000001 /* CalendarViewModel.swift */; };
+		110100182C70000100000001 /* CalendarRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200182C70000100000001 /* CalendarRootView.swift */; };
+		110100192C70000100000001 /* HeaderControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200192C70000100000001 /* HeaderControlsView.swift */; };
+		1101001A2C70000100000001 /* CalendarGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102001A2C70000100000001 /* CalendarGridView.swift */; };
+		1101001B2C70000100000001 /* DayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102001B2C70000100000001 /* DayCellView.swift */; };
+		1101001C2C70000100000001 /* DayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102001C2C70000100000001 /* DayDetailView.swift */; };
+		1101001D2C70000100000001 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102001D2C70000100000001 /* EventDetailView.swift */; };
+		1101001E2C70000100000001 /* PermissionPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102001E2C70000100000001 /* PermissionPromptView.swift */; };
+		1101001F2C70000100000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102001F2C70000100000001 /* SettingsView.swift */; };
+		110100202C70000100000001 /* CalendarPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200202C70000100000001 /* CalendarPanel.swift */; };
+		110100212C70000100000001 /* CalendarPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200212C70000100000001 /* CalendarPanelController.swift */; };
+		110100222C70000100000001 /* MockClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200222C70000100000001 /* MockClock.swift */; };
+		110100232C70000100000001 /* MockCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200232C70000100000001 /* MockCalendarService.swift */; };
+		110100242C70000100000001 /* MockPreferencesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200242C70000100000001 /* MockPreferencesStore.swift */; };
+		110100252C70000100000001 /* MockLoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200252C70000100000001 /* MockLoginItemManager.swift */; };
+		110100262C70000100000001 /* MockCalendarOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200262C70000100000001 /* MockCalendarOpener.swift */; };
+		110100272C70000100000001 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 110200272C70000100000001 /* Localizable.strings */; };
+		110100282C70000100000001 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 110200282C70000100000001 /* InfoPlist.strings */; };
+
+		/* Test Files */
+		210100012C70000100000001 /* CalendarGridCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200012C70000100000001 /* CalendarGridCalculatorTests.swift */; };
+		210100022C70000100000001 /* DateBoundaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200022C70000100000001 /* DateBoundaryTests.swift */; };
+		210100032C70000100000001 /* EventFilterAndSorterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200032C70000100000001 /* EventFilterAndSorterTests.swift */; };
+		210100042C70000100000001 /* EventKitAdapterMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200042C70000100000001 /* EventKitAdapterMappingTests.swift */; };
+		210100052C70000100000001 /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200052C70000100000001 /* PreferencesTests.swift */; };
+		210100062C70000100000001 /* PerformanceBenchmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200062C70000100000001 /* PerformanceBenchmarkTests.swift */; };
+
+		/* UI Test Files */
+		310100012C70000100000001 /* MacMenubarCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310200012C70000100000001 /* MacMenubarCalendarUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		210900012C70000100000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 010000012C70000100000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 110000012C70000100000001;
+			remoteInfo = MacMenubarCalendar;
+		};
+		310900012C70000100000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 010000012C70000100000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 110000012C70000100000001;
+			remoteInfo = MacMenubarCalendar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		110000022C70000100000001 /* MacMenubarCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MacMenubarCalendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		210000022C70000100000001 /* MacMenubarCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MacMenubarCalendarTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		310000022C70000100000001 /* MacMenubarCalendarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MacMenubarCalendarUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+
+		110200012C70000100000001 /* MacMenubarCalendarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacMenubarCalendarApp.swift; sourceTree = "<group>"; };
+		110200022C70000100000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		110200032C70000100000001 /* StatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
+		110200042C70000100000001 /* CalendarServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarServiceProtocol.swift; sourceTree = "<group>"; };
+		110200052C70000100000001 /* ClockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockProtocol.swift; sourceTree = "<group>"; };
+		110200062C70000100000001 /* PreferencesStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStoreProtocol.swift; sourceTree = "<group>"; };
+		110200072C70000100000001 /* LoginItemManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManaging.swift; sourceTree = "<group>"; };
+		110200082C70000100000001 /* CalendarOpening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOpening.swift; sourceTree = "<group>"; };
+		110200092C70000100000001 /* AuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationStatus.swift; sourceTree = "<group>"; };
+		1102000A2C70000100000001 /* AppearanceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceMode.swift; sourceTree = "<group>"; };
+		1102000B2C70000100000001 /* CalendarSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSource.swift; sourceTree = "<group>"; };
+		1102000C2C70000100000001 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		1102000D2C70000100000001 /* DayCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCellData.swift; sourceTree = "<group>"; };
+		1102000E2C70000100000001 /* SystemClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemClock.swift; sourceTree = "<group>"; };
+		1102000F2C70000100000001 /* EventKitCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitCalendarService.swift; sourceTree = "<group>"; };
+		110200102C70000100000001 /* AppPreferencesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferencesStore.swift; sourceTree = "<group>"; };
+		110200112C70000100000001 /* AppLoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoginItemManager.swift; sourceTree = "<group>"; };
+		110200122C70000100000001 /* SystemCalendarOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemCalendarOpener.swift; sourceTree = "<group>"; };
+		110200132C70000100000001 /* SystemNotificationWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemNotificationWatcher.swift; sourceTree = "<group>"; };
+		110200142C70000100000001 /* CalendarGridCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGridCalculator.swift; sourceTree = "<group>"; };
+		110200152C70000100000001 /* EventFilterAndSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterAndSorter.swift; sourceTree = "<group>"; };
+		110200162C70000100000001 /* DayLayoutEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLayoutEngine.swift; sourceTree = "<group>"; };
+		1102002B2C70000100000001 /* LunarDateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarDateHelper.swift; sourceTree = "<group>"; };
+		110200172C70000100000001 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		110200182C70000100000001 /* CalendarRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRootView.swift; sourceTree = "<group>"; };
+		110200192C70000100000001 /* HeaderControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderControlsView.swift; sourceTree = "<group>"; };
+		1102001A2C70000100000001 /* CalendarGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGridView.swift; sourceTree = "<group>"; };
+		1102001B2C70000100000001 /* DayCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCellView.swift; sourceTree = "<group>"; };
+		1102001C2C70000100000001 /* DayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDetailView.swift; sourceTree = "<group>"; };
+		1102001D2C70000100000001 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		1102001E2C70000100000001 /* PermissionPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionPromptView.swift; sourceTree = "<group>"; };
+		1102001F2C70000100000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		110200202C70000100000001 /* CalendarPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPanel.swift; sourceTree = "<group>"; };
+		110200212C70000100000001 /* CalendarPanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPanelController.swift; sourceTree = "<group>"; };
+		110200222C70000100000001 /* MockClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClock.swift; sourceTree = "<group>"; };
+		110200232C70000100000001 /* MockCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCalendarService.swift; sourceTree = "<group>"; };
+		110200242C70000100000001 /* MockPreferencesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPreferencesStore.swift; sourceTree = "<group>"; };
+		110200252C70000100000001 /* MockLoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginItemManager.swift; sourceTree = "<group>"; };
+		110200262C70000100000001 /* MockCalendarOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCalendarOpener.swift; sourceTree = "<group>"; };
+		110200292C70000100000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1102002A2C70000100000001 /* MacMenubarCalendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacMenubarCalendar.entitlements; sourceTree = "<group>"; };
+
+		210200012C70000100000001 /* CalendarGridCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGridCalculatorTests.swift; sourceTree = "<group>"; };
+		210200022C70000100000001 /* DateBoundaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBoundaryTests.swift; sourceTree = "<group>"; };
+		210200032C70000100000001 /* EventFilterAndSorterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterAndSorterTests.swift; sourceTree = "<group>"; };
+		210200042C70000100000001 /* EventKitAdapterMappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitAdapterMappingTests.swift; sourceTree = "<group>"; };
+		210200052C70000100000001 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
+		210200062C70000100000001 /* PerformanceBenchmarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceBenchmarkTests.swift; sourceTree = "<group>"; };
+
+		310200012C70000100000001 /* MacMenubarCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacMenubarCalendarUITests.swift; sourceTree = "<group>"; };
+
+		110200270001 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		110200270002 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		110200280001 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		110200280002 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		110400012C70000100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210400012C70000100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		310400012C70000100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		010100012C70000100000001 = {
+			isa = PBXGroup;
+			children = (
+				110500012C70000100000001 /* MacMenubarCalendar */,
+				210500012C70000100000001 /* MacMenubarCalendarTests */,
+				310500012C70000100000001 /* MacMenubarCalendarUITests */,
+				010500012C70000100000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		010500012C70000100000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				110000022C70000100000001 /* MacMenubarCalendar.app */,
+				210000022C70000100000001 /* MacMenubarCalendarTests.xctest */,
+				310000022C70000100000001 /* MacMenubarCalendarUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		110500012C70000100000001 /* MacMenubarCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				110500022C70000100000001 /* App */,
+				110500032C70000100000001 /* Core */,
+				110500042C70000100000001 /* Presentation */,
+				110500052C70000100000001 /* Mocks */,
+				110500062C70000100000001 /* Resources */,
+			);
+			path = MacMenubarCalendar;
+			sourceTree = "<group>";
+		};
+		110500022C70000100000001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				110200012C70000100000001 /* MacMenubarCalendarApp.swift */,
+				110200022C70000100000001 /* AppDelegate.swift */,
+				110200032C70000100000001 /* StatusItemController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		110500032C70000100000001 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				110500072C70000100000001 /* Protocols */,
+				110500082C70000100000001 /* Models */,
+				110500092C70000100000001 /* Services */,
+				1105000A2C70000100000001 /* Logic */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		110500072C70000100000001 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				110200042C70000100000001 /* CalendarServiceProtocol.swift */,
+				110200052C70000100000001 /* ClockProtocol.swift */,
+				110200062C70000100000001 /* PreferencesStoreProtocol.swift */,
+				110200072C70000100000001 /* LoginItemManaging.swift */,
+				110200082C70000100000001 /* CalendarOpening.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		110500082C70000100000001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				110200092C70000100000001 /* AuthorizationStatus.swift */,
+				1102000A2C70000100000001 /* AppearanceMode.swift */,
+				1102000B2C70000100000001 /* CalendarSource.swift */,
+				1102000C2C70000100000001 /* CalendarEvent.swift */,
+				1102000D2C70000100000001 /* DayCellData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		110500092C70000100000001 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1102000E2C70000100000001 /* SystemClock.swift */,
+				1102000F2C70000100000001 /* EventKitCalendarService.swift */,
+				110200102C70000100000001 /* AppPreferencesStore.swift */,
+				110200112C70000100000001 /* AppLoginItemManager.swift */,
+				110200122C70000100000001 /* SystemCalendarOpener.swift */,
+				110200132C70000100000001 /* SystemNotificationWatcher.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1105000A2C70000100000001 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				110200142C70000100000001 /* CalendarGridCalculator.swift */,
+				110200152C70000100000001 /* EventFilterAndSorter.swift */,
+				110200162C70000100000001 /* DayLayoutEngine.swift */,
+				1102002B2C70000100000001 /* LunarDateHelper.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		110500042C70000100000001 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				1105000B2C70000100000001 /* ViewModels */,
+				1105000C2C70000100000001 /* Views */,
+				1105000D2C70000100000001 /* Panel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		1105000B2C70000100000001 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				110200172C70000100000001 /* CalendarViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1105000C2C70000100000001 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				110200182C70000100000001 /* CalendarRootView.swift */,
+				110200192C70000100000001 /* HeaderControlsView.swift */,
+				1102001A2C70000100000001 /* CalendarGridView.swift */,
+				1102001B2C70000100000001 /* DayCellView.swift */,
+				1102001C2C70000100000001 /* DayDetailView.swift */,
+				1102001D2C70000100000001 /* EventDetailView.swift */,
+				1102001E2C70000100000001 /* PermissionPromptView.swift */,
+				1102001F2C70000100000001 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1105000D2C70000100000001 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				110200202C70000100000001 /* CalendarPanel.swift */,
+				110200212C70000100000001 /* CalendarPanelController.swift */,
+			);
+			path = Panel;
+			sourceTree = "<group>";
+		};
+		110500052C70000100000001 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				110200222C70000100000001 /* MockClock.swift */,
+				110200232C70000100000001 /* MockCalendarService.swift */,
+				110200242C70000100000001 /* MockPreferencesStore.swift */,
+				110200252C70000100000001 /* MockLoginItemManager.swift */,
+				110200262C70000100000001 /* MockCalendarOpener.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		110500062C70000100000001 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				110200292C70000100000001 /* Info.plist */,
+				1102002A2C70000100000001 /* MacMenubarCalendar.entitlements */,
+				110200272C70000100000001 /* Localizable.strings */,
+				110200282C70000100000001 /* InfoPlist.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		210500012C70000100000001 /* MacMenubarCalendarTests */ = {
+			isa = PBXGroup;
+			children = (
+				210200012C70000100000001 /* CalendarGridCalculatorTests.swift */,
+				210200022C70000100000001 /* DateBoundaryTests.swift */,
+				210200032C70000100000001 /* EventFilterAndSorterTests.swift */,
+				210200042C70000100000001 /* EventKitAdapterMappingTests.swift */,
+				210200052C70000100000001 /* PreferencesTests.swift */,
+				210200062C70000100000001 /* PerformanceBenchmarkTests.swift */,
+			);
+			path = MacMenubarCalendarTests;
+			sourceTree = "<group>";
+		};
+		310500012C70000100000001 /* MacMenubarCalendarUITests */ = {
+			isa = PBXGroup;
+			children = (
+				310200012C70000100000001 /* MacMenubarCalendarUITests.swift */,
+			);
+			path = MacMenubarCalendarUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		110000012C70000100000001 /* MacMenubarCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 110600012C70000100000001 /* Build configuration list for PBXNativeTarget "MacMenubarCalendar" */;
+			buildPhases = (
+				110300012C70000100000001 /* Sources */,
+				110400012C70000100000001 /* Frameworks */,
+				110700012C70000100000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacMenubarCalendar;
+			productName = "Mac Menubar Calendar";
+			productReference = 110000022C70000100000001 /* MacMenubarCalendar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		210000012C70000100000001 /* MacMenubarCalendarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 210600012C70000100000001 /* Build configuration list for PBXNativeTarget "MacMenubarCalendarTests" */;
+			buildPhases = (
+				210300012C70000100000001 /* Sources */,
+				210400012C70000100000001 /* Frameworks */,
+				210700012C70000100000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				210800012C70000100000001 /* PBXTargetDependency */,
+			);
+			name = MacMenubarCalendarTests;
+			productName = MacMenubarCalendarTests;
+			productReference = 210000022C70000100000001 /* MacMenubarCalendarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		310000012C70000100000001 /* MacMenubarCalendarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 310600012C70000100000001 /* Build configuration list for PBXNativeTarget "MacMenubarCalendarUITests" */;
+			buildPhases = (
+				310300012C70000100000001 /* Sources */,
+				310400012C70000100000001 /* Frameworks */,
+				310700012C70000100000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				310800012C70000100000001 /* PBXTargetDependency */,
+			);
+			name = MacMenubarCalendarUITests;
+			productName = MacMenubarCalendarUITests;
+			productReference = 310000022C70000100000001 /* MacMenubarCalendarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		010000012C70000100000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					110000012C70000100000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					210000012C70000100000001 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 110000012C70000100000001;
+					};
+					310000012C70000100000001 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 110000012C70000100000001;
+					};
+				};
+			};
+			buildConfigurationList = 010600012C70000100000001 /* Build configuration list for PBXProject "MacMenubarCalendar" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				"zh-Hant",
+				Base,
+			);
+			mainGroup = 010100012C70000100000001;
+			productRefGroup = 010500012C70000100000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				110000012C70000100000001 /* MacMenubarCalendar */,
+				210000012C70000100000001 /* MacMenubarCalendarTests */,
+				310000012C70000100000001 /* MacMenubarCalendarUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		110700012C70000100000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				110100272C70000100000001 /* Localizable.strings in Resources */,
+				110100282C70000100000001 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210700012C70000100000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		310700012C70000100000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		110300012C70000100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				110100012C70000100000001 /* MacMenubarCalendarApp.swift in Sources */,
+				110100022C70000100000001 /* AppDelegate.swift in Sources */,
+				110100032C70000100000001 /* StatusItemController.swift in Sources */,
+				110100042C70000100000001 /* CalendarServiceProtocol.swift in Sources */,
+				110100052C70000100000001 /* ClockProtocol.swift in Sources */,
+				110100062C70000100000001 /* PreferencesStoreProtocol.swift in Sources */,
+				110100072C70000100000001 /* LoginItemManaging.swift in Sources */,
+				110100082C70000100000001 /* CalendarOpening.swift in Sources */,
+				110100092C70000100000001 /* AuthorizationStatus.swift in Sources */,
+				1101000A2C70000100000001 /* AppearanceMode.swift in Sources */,
+				1101000B2C70000100000001 /* CalendarSource.swift in Sources */,
+				1101000C2C70000100000001 /* CalendarEvent.swift in Sources */,
+				1101000D2C70000100000001 /* DayCellData.swift in Sources */,
+				1101000E2C70000100000001 /* SystemClock.swift in Sources */,
+				1101000F2C70000100000001 /* EventKitCalendarService.swift in Sources */,
+				110100102C70000100000001 /* AppPreferencesStore.swift in Sources */,
+				110100112C70000100000001 /* AppLoginItemManager.swift in Sources */,
+				110100122C70000100000001 /* SystemCalendarOpener.swift in Sources */,
+				110100132C70000100000001 /* SystemNotificationWatcher.swift in Sources */,
+				110100142C70000100000001 /* CalendarGridCalculator.swift in Sources */,
+				110100152C70000100000001 /* EventFilterAndSorter.swift in Sources */,
+				110100162C70000100000001 /* DayLayoutEngine.swift in Sources */,
+				1101002A2C70000100000001 /* LunarDateHelper.swift in Sources */,
+				110100172C70000100000001 /* CalendarViewModel.swift in Sources */,
+				110100182C70000100000001 /* CalendarRootView.swift in Sources */,
+				110100192C70000100000001 /* HeaderControlsView.swift in Sources */,
+				1101001A2C70000100000001 /* CalendarGridView.swift in Sources */,
+				1101001B2C70000100000001 /* DayCellView.swift in Sources */,
+				1101001C2C70000100000001 /* DayDetailView.swift in Sources */,
+				1101001D2C70000100000001 /* EventDetailView.swift in Sources */,
+				1101001E2C70000100000001 /* PermissionPromptView.swift in Sources */,
+				1101001F2C70000100000001 /* SettingsView.swift in Sources */,
+				110100202C70000100000001 /* CalendarPanel.swift in Sources */,
+				110100212C70000100000001 /* CalendarPanelController.swift in Sources */,
+				110100222C70000100000001 /* MockClock.swift in Sources */,
+				110100232C70000100000001 /* MockCalendarService.swift in Sources */,
+				110100242C70000100000001 /* MockPreferencesStore.swift in Sources */,
+				110100252C70000100000001 /* MockLoginItemManager.swift in Sources */,
+				110100262C70000100000001 /* MockCalendarOpener.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		210300012C70000100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				210100012C70000100000001 /* CalendarGridCalculatorTests.swift in Sources */,
+				210100022C70000100000001 /* DateBoundaryTests.swift in Sources */,
+				210100032C70000100000001 /* EventFilterAndSorterTests.swift in Sources */,
+				210100042C70000100000001 /* EventKitAdapterMappingTests.swift in Sources */,
+				210100052C70000100000001 /* PreferencesTests.swift in Sources */,
+				210100062C70000100000001 /* PerformanceBenchmarkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		310300012C70000100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				310100012C70000100000001 /* MacMenubarCalendarUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		210800012C70000100000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 110000012C70000100000001 /* MacMenubarCalendar */;
+			targetProxy = 210900012C70000100000001 /* PBXContainerItemProxy */;
+		};
+		310800012C70000100000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 110000012C70000100000001 /* MacMenubarCalendar */;
+			targetProxy = 310900012C70000100000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		110200272C70000100000001 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				110200270001 /* en */,
+				110200270002 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		110200282C70000100000001 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				110200280001 /* en */,
+				110200280002 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		010600022C70000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDEFINED_VARIABLES = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		010600032C70000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDEFINED_VARIABLES = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		110600022C70000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MacMenubarCalendar/Resources/MacMenubarCalendar.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MacMenubarCalendar/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendar;
+				PRODUCT_MODULE_NAME = MacMenubarCalendar;
+				PRODUCT_NAME = "Mac Menubar Calendar";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		110600032C70000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MacMenubarCalendar/Resources/MacMenubarCalendar.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MacMenubarCalendar/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendar;
+				PRODUCT_MODULE_NAME = MacMenubarCalendar;
+				PRODUCT_NAME = "Mac Menubar Calendar";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		210600022C70000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mac Menubar Calendar.app/Contents/MacOS/Mac Menubar Calendar";
+			};
+			name = Debug;
+		};
+		210600032C70000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mac Menubar Calendar.app/Contents/MacOS/Mac Menubar Calendar";
+			};
+			name = Release;
+		};
+		310600022C70000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = MacMenubarCalendar;
+			};
+			name = Debug;
+		};
+		310600032C70000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = MacMenubarCalendar;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		010600012C70000100000001 /* Build configuration list for PBXProject "MacMenubarCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010600022C70000100000001 /* Debug */,
+				010600032C70000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		110600012C70000100000001 /* Build configuration list for PBXNativeTarget "MacMenubarCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				110600022C70000100000001 /* Debug */,
+				110600032C70000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		210600012C70000100000001 /* Build configuration list for PBXNativeTarget "MacMenubarCalendarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				210600022C70000100000001 /* Debug */,
+				210600032C70000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		310600012C70000100000001 /* Build configuration list for PBXNativeTarget "MacMenubarCalendarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				310600022C70000100000001 /* Debug */,
+				310600032C70000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 010000012C70000100000001 /* Project object */;
+}

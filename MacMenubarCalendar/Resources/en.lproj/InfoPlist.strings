@@ -1,0 +1,4 @@
+/* InfoPlist.strings (English) */
+"CFBundleDisplayName" = "Mac Menubar Calendar";
+"CFBundleName" = "Mac Menubar Calendar";
+"NSCalendarsFullAccessUsageDescription" = "Mac Menubar Calendar requires calendar access to display your upcoming schedule in the menu bar. This app is strictly read-only and will never create, modify, or delete your events.";
