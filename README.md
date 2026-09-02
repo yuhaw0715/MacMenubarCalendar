@@ -4,23 +4,49 @@ Mac Menubar Calendar 是一個專為 macOS 設計的原生、輕量級純 Menuba
 
 ---
 
-## 安裝方式
+## 📥 安裝、更新與解除安裝 (Homebrew)
 
-### 透過 Homebrew Tap 安裝 (推薦)
+### 1. 一鍵安裝 (推薦)
 
-您可透過自訂的 Homebrew Tap 一鍵安裝：
+您可直接指定 Tap 儲存庫與 App 名稱進行單行一鍵安裝（無需分開執行 `brew tap`）：
 
 ```sh
-# 新增 Tap 儲存庫
-brew tap yuhaw0715/tap
-
-# 安裝 Mac Menubar Calendar
-brew install --cask mac-menubar-calendar
+brew install --cask yuhaw0715/tap/mac-menubar-calendar
 ```
 
 > [!NOTE]
 > **首次啟動說明 (Gatekeeper)**：
 > 首次啟動若 macOS 顯示「無法驗證開發者」提示，請前往 macOS **「系統設定」>「隱私權與安全性」**，在安全性區塊下方點擊 **「仍要打開」** 即可正常啟動。
+
+---
+
+### 2. 更新至最新版
+
+當有新版本發佈時，可透過以下指令升級：
+
+```sh
+brew update
+brew upgrade --cask mac-menubar-calendar
+```
+
+---
+
+### 3. 解除安裝 (Uninstall)
+
+- **標準解除安裝**：
+  ```sh
+  brew uninstall --cask mac-menubar-calendar
+  ```
+
+- **完整乾淨移除（包含清除本機偏好設定檔）**：
+  ```sh
+  brew uninstall --zap --cask mac-menubar-calendar
+  ```
+
+- **（選用）移除 Tap 儲存庫**：
+  ```sh
+  brew untap yuhaw0715/tap
+  ```
 
 ---
 
