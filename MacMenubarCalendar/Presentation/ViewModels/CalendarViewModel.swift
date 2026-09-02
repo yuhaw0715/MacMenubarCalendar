@@ -28,6 +28,7 @@ public final class CalendarViewModel: ObservableObject {
     @Published public var isPinned: Bool = false
     @Published public var appearanceMode: AppearanceMode = .system
     @Published public var appLanguage: AppLanguage = .system
+    @Published public var firstDayOfWeek: FirstDayOfWeek = .system
     @Published public var showDeclinedEvents: Bool = false
     @Published public var launchAtLogin: Bool = false
     @Published public private(set) var isLoading: Bool = false
@@ -35,6 +36,16 @@ public final class CalendarViewModel: ObservableObject {
 
     public var timeZone: TimeZone { clock.timeZone }
     public var calendar: Calendar { clock.calendar }
+
+    public var monthYearTitle: String {
+        let locale = appLanguage.effectiveLocale()
+        return gridCalculator.monthTitle(for: startDate, calendar: clock.calendar, locale: locale)
+    }
+
+    public var weekdayHeaders: [String] {
+        let locale = appLanguage.effectiveLocale()
+        return gridCalculator.weekdayHeaders(firstDayOfWeek: firstDayOfWeek, calendar: clock.calendar, locale: locale)
+    }
 
     private var rawEventsInRange: [CalendarEvent] = []
     private var lastAvailableCellHeight: CGFloat = 80.0
@@ -61,11 +72,12 @@ public final class CalendarViewModel: ObservableObject {
         self.layoutEngine = layoutEngine
 
         self.authorizationStatus = calendarService.authorizationStatus
-        self.startDate = clock.calendar.startOfDay(for: clock.now)
         self.selectedCalendarIds = preferencesStore.selectedCalendarIds
         self.showDeclinedEvents = preferencesStore.showDeclinedEvents
         self.appearanceMode = preferencesStore.appearanceMode
         self.appLanguage = preferencesStore.appLanguage
+        self.firstDayOfWeek = preferencesStore.firstDayOfWeek
+        self.startDate = gridCalculator.resetToToday(now: clock.now, firstDayOfWeek: preferencesStore.firstDayOfWeek, calendar: clock.calendar)
         self.launchAtLogin = loginItemManager.isEnabled
         self.isPinned = preferencesStore.isPinned
 
@@ -99,7 +111,7 @@ public final class CalendarViewModel: ObservableObject {
 
     public func onPanelOpen() {
         // Requirement: reset date range to today on each open
-        startDate = clock.calendar.startOfDay(for: clock.now)
+        startDate = gridCalculator.resetToToday(now: clock.now, firstDayOfWeek: firstDayOfWeek, calendar: clock.calendar)
         updateTodayDateNumber()
         selectedDay = nil
         selectedEvent = nil
@@ -175,7 +187,7 @@ public final class CalendarViewModel: ObservableObject {
     }
 
     public func resetToToday() {
-        startDate = gridCalculator.resetToToday(now: clock.now, calendar: clock.calendar)
+        startDate = gridCalculator.resetToToday(now: clock.now, firstDayOfWeek: firstDayOfWeek, calendar: clock.calendar)
         Task {
             await refreshEventsOnly()
         }
@@ -218,6 +230,17 @@ public final class CalendarViewModel: ObservableObject {
         preferencesStore.appLanguage = language
         AppStrings.currentLanguage = language
         rebuildDayCells()
+    }
+
+    public func setFirstDayOfWeek(_ firstDayOfWeek: FirstDayOfWeek) {
+        self.firstDayOfWeek = firstDayOfWeek
+        preferencesStore.firstDayOfWeek = firstDayOfWeek
+        let midWeekAnchor = clock.calendar.date(byAdding: .day, value: 3, to: startDate) ?? startDate
+        startDate = gridCalculator.startOfWeek(for: midWeekAnchor, firstDayOfWeek: firstDayOfWeek, calendar: clock.calendar)
+        rebuildDayCells()
+        Task {
+            await refreshEventsOnly()
+        }
     }
 
     public func toggleLaunchAtLogin() {
@@ -274,7 +297,7 @@ public final class CalendarViewModel: ObservableObject {
     public func handleDateOrTimeZoneChanged() {
         AppStrings.currentLanguage = appLanguage
         updateTodayDateNumber()
-        startDate = gridCalculator.resetToToday(now: clock.now, calendar: clock.calendar)
+        startDate = gridCalculator.resetToToday(now: clock.now, firstDayOfWeek: firstDayOfWeek, calendar: clock.calendar)
         Task {
             await refreshEventsOnly()
         }

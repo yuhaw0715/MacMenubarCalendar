@@ -145,6 +145,22 @@ public struct SettingsView: View {
                             .pickerStyle(.segmented)
                             .frame(width: 220)
                         }
+
+                        // First Day of Week
+                        HStack {
+                            Text(AppStrings.localized("settings.first_day_of_week.title"))
+                            Spacer()
+                            Picker("", selection: Binding(
+                                get: { viewModel.firstDayOfWeek },
+                                set: { viewModel.setFirstDayOfWeek($0) }
+                            )) {
+                                ForEach(FirstDayOfWeek.allCases) { item in
+                                    Text(item.localizedTitle).tag(item)
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                            .frame(width: 220)
+                        }
                     }
 
                     Divider()

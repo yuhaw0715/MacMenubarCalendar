@@ -6,6 +6,7 @@ public final class MockPreferencesStore: PreferencesStoreProtocol {
     public var showDeclinedEvents: Bool
     public var appearanceMode: AppearanceMode
     public var appLanguage: AppLanguage
+    public var firstDayOfWeek: FirstDayOfWeek
     public var launchAtLogin: Bool
     public var windowWidth: Double
     public var windowHeight: Double
@@ -16,6 +17,7 @@ public final class MockPreferencesStore: PreferencesStoreProtocol {
         showDeclinedEvents: Bool = false,
         appearanceMode: AppearanceMode = .system,
         appLanguage: AppLanguage = .system,
+        firstDayOfWeek: FirstDayOfWeek = .system,
         launchAtLogin: Bool = false,
         windowWidth: Double = 680,
         windowHeight: Double = 460,
@@ -25,6 +27,7 @@ public final class MockPreferencesStore: PreferencesStoreProtocol {
         self.showDeclinedEvents = showDeclinedEvents
         self.appearanceMode = appearanceMode
         self.appLanguage = appLanguage
+        self.firstDayOfWeek = firstDayOfWeek
         self.launchAtLogin = launchAtLogin
         self.windowWidth = windowWidth
         self.windowHeight = windowHeight

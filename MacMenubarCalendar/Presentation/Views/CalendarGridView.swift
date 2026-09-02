@@ -10,22 +10,15 @@ public struct CalendarGridView: View {
     private let columns = 7
     private let rows = 4
 
-    private var weekdayFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.locale = Locale.current
-        formatter.timeZone = viewModel.timeZone
-        formatter.dateFormat = "E"
-        return formatter
-    }
-
     public var body: some View {
+        let weekdayHeaders = viewModel.weekdayHeaders
+
         VStack(spacing: 0) {
             // Weekday Header Bar
             HStack(spacing: 0) {
                 ForEach(0..<columns, id: \.self) { colIndex in
-                    if colIndex < viewModel.dayCells.count {
-                        let date = viewModel.dayCells[colIndex].date
-                        Text(weekdayFormatter.string(from: date))
+                    if colIndex < weekdayHeaders.count {
+                        Text(weekdayHeaders[colIndex])
                             .font(.system(size: 11, weight: .medium))
                             .foregroundColor(.white.opacity(0.6))
                             .frame(maxWidth: .infinity)

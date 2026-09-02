@@ -10,12 +10,7 @@ public struct HeaderControlsView: View {
     }
 
     private var monthYearTitle: String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale.current
-        formatter.timeZone = viewModel.timeZone
-        // In zh-Hant: 2026年8月; in en: August 2026
-        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMMM", options: 0, locale: Locale.current) ?? "yyyy MMMM"
-        return formatter.string(from: viewModel.startDate)
+        viewModel.monthYearTitle
     }
 
     public var body: some View {

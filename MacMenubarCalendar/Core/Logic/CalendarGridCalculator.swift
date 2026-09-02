@@ -7,6 +7,14 @@ public struct CalendarGridCalculator: Sendable {
 
     public init() {}
 
+    public func startOfWeek(for date: Date, firstDayOfWeek: FirstDayOfWeek = .system, calendar: Calendar) -> Date {
+        let startOfDay = calendar.startOfDay(for: date)
+        let currentWeekday = calendar.component(.weekday, from: startOfDay)
+        let targetWeekday = firstDayOfWeek.effectiveWeekday(calendar: calendar)
+        let daysBack = (currentWeekday - targetWeekday + 7) % 7
+        return calendar.date(byAdding: .day, value: -daysBack, to: startOfDay) ?? startOfDay.addingTimeInterval(Double(-daysBack * 86400))
+    }
+
     public func calculateGridDates(startDate: Date, calendar: Calendar) -> [Date] {
         let startOfFirstDay = calendar.startOfDay(for: startDate)
         var dates: [Date] = []
@@ -36,7 +44,34 @@ public struct CalendarGridCalculator: Sendable {
         return calendar.date(byAdding: .day, value: -7, to: startOfDay) ?? startOfDay.addingTimeInterval(-7 * 86400)
     }
 
-    public func resetToToday(now: Date, calendar: Calendar) -> Date {
-        calendar.startOfDay(for: now)
+    public func resetToToday(now: Date, firstDayOfWeek: FirstDayOfWeek = .system, calendar: Calendar) -> Date {
+        startOfWeek(for: now, firstDayOfWeek: firstDayOfWeek, calendar: calendar)
+    }
+
+    public func weekdayHeaders(firstDayOfWeek: FirstDayOfWeek = .system, calendar: Calendar = .current, locale: Locale = .current) -> [String] {
+        let referenceDate = Date(timeIntervalSince1970: 1700000000)
+        var cal = calendar
+        cal.locale = locale
+        let weekStart = startOfWeek(for: referenceDate, firstDayOfWeek: firstDayOfWeek, calendar: cal)
+
+        let formatter = DateFormatter()
+        formatter.calendar = cal
+        formatter.timeZone = cal.timeZone
+        formatter.locale = locale
+        formatter.dateFormat = "E"
+
+        return (0..<Self.columns).compactMap { offset in
+            guard let day = cal.date(byAdding: .day, value: offset, to: weekStart) else { return nil }
+            return formatter.string(from: day)
+        }
+    }
+
+    public func monthTitle(for gridStartDate: Date, calendar: Calendar = .current, locale: Locale = .current) -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = calendar
+        formatter.timeZone = calendar.timeZone
+        formatter.locale = locale
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMMM", options: 0, locale: locale) ?? "yyyy MMMM"
+        return formatter.string(from: gridStartDate)
     }
 }

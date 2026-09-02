@@ -18,6 +18,7 @@
 		110100092C70000100000001 /* AuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200092C70000100000001 /* AuthorizationStatus.swift */; };
 		1101000A2C70000100000001 /* AppearanceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102000A2C70000100000001 /* AppearanceMode.swift */; };
 		1101002D2C70000100000001 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102002E2C70000100000001 /* AppLanguage.swift */; };
+		1101002E2C70000100000001 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102002F2C70000100000001 /* FirstDayOfWeek.swift */; };
 		1101000B2C70000100000001 /* CalendarSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102000B2C70000100000001 /* CalendarSource.swift */; };
 		1101000C2C70000100000001 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102000C2C70000100000001 /* CalendarEvent.swift */; };
 		1101000D2C70000100000001 /* DayCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102000D2C70000100000001 /* DayCellData.swift */; };
@@ -98,6 +99,7 @@
 		110200092C70000100000001 /* AuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationStatus.swift; sourceTree = "<group>"; };
 		1102000A2C70000100000001 /* AppearanceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceMode.swift; sourceTree = "<group>"; };
 		1102002E2C70000100000001 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
+		1102002F2C70000100000001 /* FirstDayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstDayOfWeek.swift; sourceTree = "<group>"; };
 		1102000B2C70000100000001 /* CalendarSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSource.swift; sourceTree = "<group>"; };
 		1102000C2C70000100000001 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		1102000D2C70000100000001 /* DayCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCellData.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				110200092C70000100000001 /* AuthorizationStatus.swift */,
 				1102000A2C70000100000001 /* AppearanceMode.swift */,
 				1102002E2C70000100000001 /* AppLanguage.swift */,
+				1102002F2C70000100000001 /* FirstDayOfWeek.swift */,
 				1102000B2C70000100000001 /* CalendarSource.swift */,
 				1102000C2C70000100000001 /* CalendarEvent.swift */,
 				1102000D2C70000100000001 /* DayCellData.swift */,
@@ -506,6 +509,7 @@
 				110100092C70000100000001 /* AuthorizationStatus.swift in Sources */,
 				1101000A2C70000100000001 /* AppearanceMode.swift in Sources */,
 				1101002D2C70000100000001 /* AppLanguage.swift in Sources */,
+				1101002E2C70000100000001 /* FirstDayOfWeek.swift in Sources */,
 				1101000B2C70000100000001 /* CalendarSource.swift in Sources */,
 				1101000C2C70000100000001 /* CalendarEvent.swift in Sources */,
 				1101000D2C70000100000001 /* DayCellData.swift in Sources */,

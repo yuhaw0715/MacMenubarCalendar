@@ -12,6 +12,7 @@ public final class AppPreferencesStore: ObservableObject, PreferencesStoreProtoc
         static let showDeclinedEvents = "showDeclinedEvents"
         static let appearanceMode = "appearanceMode"
         static let appLanguage = "appLanguage"
+        static let firstDayOfWeek = "firstDayOfWeek"
         static let launchAtLogin = "launchAtLogin"
         static let windowWidth = "windowWidth"
         static let windowHeight = "windowHeight"
@@ -28,6 +29,7 @@ public final class AppPreferencesStore: ObservableObject, PreferencesStoreProtoc
             Keys.showDeclinedEvents: false,
             Keys.appearanceMode: AppearanceMode.system.rawValue,
             Keys.appLanguage: AppLanguage.system.rawValue,
+            Keys.firstDayOfWeek: FirstDayOfWeek.system.rawValue,
             Keys.launchAtLogin: false,
             Keys.windowWidth: 720.0,
             Keys.windowHeight: 500.0,
@@ -86,6 +88,20 @@ public final class AppPreferencesStore: ObservableObject, PreferencesStoreProtoc
         }
         set {
             userDefaults.set(newValue.rawValue, forKey: Keys.appLanguage)
+            objectWillChange.send()
+        }
+    }
+
+    public var firstDayOfWeek: FirstDayOfWeek {
+        get {
+            guard let raw = userDefaults.string(forKey: Keys.firstDayOfWeek),
+                  let mode = FirstDayOfWeek(rawValue: raw) else {
+                return .system
+            }
+            return mode
+        }
+        set {
+            userDefaults.set(newValue.rawValue, forKey: Keys.firstDayOfWeek)
             objectWillChange.send()
         }
     }

@@ -19,6 +19,7 @@ Mac Menubar Calendar 是一個原生 macOS menubar 行事曆檢視程式。它�
 - 只支援 Apple Silicon（arm64）。
 - 使用 Swift、SwiftUI；只有 menubar、panel 或必要系統整合才使用 AppKit。
 - 同時支援 Xcode 專案建置與 Swift Package Manager（SPM，`swift run` / `swift test`）。
+- 一鍵打包發佈腳本為 `scripts/build-release.sh`（支援自動組裝 `.app`、簽署、產出 `releases/MacMenubarCalendar-v{version}.zip` 與更新 `homebrew-tap` Cask）。
 - Bundle identifier 固定為 `com.yuhaw0715.MacMenubarCalendar`。
 - App 為純 menubar App，不顯示 Dock 圖示。
 - 啟用 App Sandbox。
@@ -42,12 +43,13 @@ Mac Menubar Calendar 是一個原生 macOS menubar 行事曆檢視程式。它�
 - 日期計算使用系統 Calendar 與半開區間，不以固定秒數推算天數。
 - 所有日期與事件歸屬依 Mac 目前系統時區計算。
 - 多語系字串統一透過 `AppStrings` 模組讀取，確保在 SPM `Bundle.module` 與 `.app` `Bundle.main` 環境下皆能正常解析並具備安全 Fallback。
-- 選單列圖示透過 `MenubarIconRenderer` 繪製雙層（月份/日期）Template 影像，並根據 `Locale` 自動切換中文（`9月`）與英文（`SEP`）。
+- 選單列圖示透過 `MenubarIconRenderer` 繪製雙層（月份/日期）Template 影像，並根據 `AppLanguage` 與 `Locale` 自動切換中文（`9月`）與英文（`SEP`）。
+- 偏好儲存（`AppPreferencesStore`）支援行事曆選擇、拒絕行程、外觀、語言模式（`AppLanguage`）及一週起始日（`FirstDayOfWeek`）。
 - 不引入 Core Data、SwiftData、iCloud、第三方同步 SDK 或遠端服務，除非需求與 OpenSpec 已明確更新並獲得確認。
 
 ## UI、在地化與輔助使用
 
-- 介面提供繁體中文與英文，其他語言回退英文；日期時間格式跟隨系統地區。
+- 介面提供繁體中文與英文，支援「跟隨系統」、「繁體中文」與「English」切換，未支援語言回退英文；日期時間格式跟隨系統地區。
 - 支援農曆日期計算與顯示（`LunarDateHelper`）。
 - 支援 VoiceOver、完整鍵盤操作、清楚焦點順序、系統文字大小及提高對比。
 - 行事曆、選取狀態與事件狀態不得只靠顏色表達。
@@ -65,7 +67,7 @@ Mac Menubar Calendar 是一個原生 macOS menubar 行事曆檢視程式。它�
 - Homebrew tap：`yuhaw0715/homebrew-tap`；外部 tap 的修改需要使用者另行明確授權。
 - 第一階段產物為包含 `Mac Menubar Calendar.app` 的 ad-hoc signed ZIP。
 - 建置流程須保留未來切換 Developer ID、hardened runtime、notarization 與 stapling 的能力。
-- 第一階段 release 與 Cask 均採人工操作；不得自行建立 GitHub Release 或發佈 Cask。
+- 第一階段 release 與 Cask 均採授權操作；不得未經使用者明確要求自行建立 GitHub Release 或發佈 Cask。
 
 ## Repository 操作
 

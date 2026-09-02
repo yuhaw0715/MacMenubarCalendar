@@ -33,6 +33,10 @@
 "settings.language.system" = "跟隨系統";
 "settings.language.zh_hant" = "繁體中文";
 "settings.language.en" = "English";
+"settings.first_day_of_week.title" = "一週第一天";
+"settings.first_day_of_week.system" = "跟隨系統";
+"settings.first_day_of_week.sunday" = "星期日";
+"settings.first_day_of_week.monday" = "星期一";
 "settings.about.title" = "關於與隱私";
 "settings.about.privacy_note" = "本 App 為唯讀檢視器，不收集資料，所有偏好僅保存於本機。";
 "settings.open_privacy_settings" = "開啟系統隱私設定…";

@@ -73,7 +73,8 @@ final class EventKitAdapterMappingTests: XCTestCase {
 
         await viewModel.refreshData()
 
-        XCTAssertEqual(viewModel.dayCells.first?.events.first?.title, "Super Secret Confidential Meeting")
+        let todayCell = viewModel.dayCells.first { $0.isToday }
+        XCTAssertEqual(todayCell?.events.first?.title, "Super Secret Confidential Meeting")
 
         // Verify that neither the title, location, nor event id is present in userDefaults dictionary!
         let allKeys = userDefaults.dictionaryRepresentation()
