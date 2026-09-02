@@ -2,7 +2,7 @@
 
 定義應用程式的平台、安全邊界、可驗證測試及 Homebrew 發佈契約，並確保初期 ad-hoc 簽署能平順升級為 Developer ID 正式簽署。
 
-## ADDED Requirements
+## Requirements
 
 ### Requirement: 限定支援平台
 發佈成品 SHALL 支援 Apple Silicon 且最低需要 macOS 15，App bundle identifier MUST 為 `com.yuhaw0715.MacMenubarCalendar`。
@@ -40,15 +40,23 @@ App MUST NOT 整合分析、遙測、遠端錯誤回報、第三方同步或 App
 - **THEN** 文件指示使用者從「隱私權與安全性」明確核准該 App
 
 ### Requirement: 支援自有 Homebrew Cask
-維護者 SHALL 能在 `yuhaw0715/homebrew-tap` 手動維護 `mac-menubar-calendar` Cask，從 `yuhaw0715/MacMenubarCalendar` GitHub Release 下載 ZIP 並以 SHA-256 驗證。
+維護者 SHALL 在 `yuhaw0715/homebrew-tap` 維護 `mac-menubar-calendar` Cask，定義從 `yuhaw0715/MacMenubarCalendar` GitHub Release 下載 ZIP、以 SHA-256 驗證、限定 macOS 15+ 與 Apple Silicon 架構、安裝 `Mac Menubar Calendar.app`，並宣告 `zap trash` 清理本機偏好與快取。專案 SHALL 提供 Cask 產出工具以輔助發佈流程。
 
 #### Scenario: 使用 Homebrew 安裝
-- **WHEN** 使用者執行 `brew install --cask yuhaw0715/tap/mac-menubar-calendar`
-- **THEN** Homebrew 驗證 Release ZIP 並安裝 `Mac Menubar Calendar.app`
+- **WHEN** 使用者執行 `brew tap yuhaw0715/tap && brew install --cask mac-menubar-calendar`
+- **THEN** Homebrew 依據 Cask 下載 Release ZIP，校驗 SHA-256 並將 `Mac Menubar Calendar.app` 正確安裝至 `/Applications`
 
 #### Scenario: 使用 Homebrew 更新
-- **WHEN** 維護者發布新版並手動更新 Cask 版本、網址及 SHA-256
-- **THEN** 使用者可透過 `brew upgrade --cask` 安裝新版
+- **WHEN** 維護者發布新版並更新 Cask 的 version、url 與 sha256
+- **THEN** 使用者執行 `brew upgrade --cask mac-menubar-calendar` 能順暢升級至最新版
+
+#### Scenario: 使用 Homebrew 解除安裝
+- **WHEN** 使用者執行 `brew uninstall --zap --cask mac-menubar-calendar`
+- **THEN** Homebrew 移除應用程式並依 `zap trash` 宣告清理 `com.yuhaw0715.MacMenubarCalendar` 的本機偏好檔案
+
+#### Scenario: 產出 Cask 檔案
+- **WHEN** 維護者執行 `scripts/generate_cask.sh` 或 `scripts/build-release.sh`
+- **THEN** 腳本自動計算 SHA-256 並產出符合 Homebrew 語法標準的 Cask 檔案
 
 ### Requirement: 預留正式簽署
 建置與發佈流程 SHALL 將簽署身份及 notarization 設定參數化，使未來可改用 Developer ID Application、hardened runtime、notarization 與 stapling，而不變更 bundle identifier、App 架構或偏好儲存位置。

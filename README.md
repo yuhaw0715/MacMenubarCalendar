@@ -4,6 +4,26 @@ Mac Menubar Calendar 是一個專為 macOS 設計的原生、輕量級純 Menuba
 
 ---
 
+## 安裝方式
+
+### 透過 Homebrew Tap 安裝 (推薦)
+
+您可透過自訂的 Homebrew Tap 一鍵安裝：
+
+```sh
+# 新增 Tap 儲存庫
+brew tap yuhaw0715/tap
+
+# 安裝 Mac Menubar Calendar
+brew install --cask mac-menubar-calendar
+```
+
+> [!NOTE]
+> **首次啟動說明 (Gatekeeper)**：
+> 首次啟動若 macOS 顯示「無法驗證開發者」提示，請前往 macOS **「系統設定」>「隱私權與安全性」**，在安全性區塊下方點擊 **「仍要打開」** 即可正常啟動。
+
+---
+
 ## 特色功能
 
 - **雙層緊湊 Menubar 圖示**：
@@ -21,6 +41,9 @@ Mac Menubar Calendar 是一個專為 macOS 設計的原生、輕量級純 Menuba
   - 支援「上一週」、「下一週」平滑切換，並提供「今天」一鍵快速回正。
   - 支援視窗自由縮放與釘選（Pin）功能，在失焦時可保持顯示。
   - 單擊行程可查看詳細資訊（時間、地點、所屬行事曆），並可一鍵跳轉至 Apple「行事曆」App 繼續操作。
+- **語言與偏好設定**：
+  - 支援語言自動與手動切換（跟隨系統、繁體中文、English）。
+  - 跟隨系統時，中文環境走繁體中文，非中文環境自動回退至英文。
 - **便捷結束與快捷操作**：
   - 月曆視窗右上角提供紅色電源結束按鈕 (`⏻`)。
   - 選單列圖示支援**滑鼠右鍵選單**（開啟月曆、重新整理 `⌘R`、偏好設定 `⌘,`、結束 App `⌘Q`）。
@@ -36,11 +59,11 @@ Mac Menubar Calendar 是一個專為 macOS 設計的原生、輕量級純 Menuba
 - **純記憶體處理**：行程內容僅保留於記憶體中，絕不持久化儲存至本機資料庫或磁碟。
 - **零遙測與資料收集**：無任何分析代碼、無崩潰回報上傳、不存取網路進行未授權傳輸。
 - **最小權限 App Sandbox**：於 App Sandbox 內執行，僅申請讀取行事曆必要的 Sandbox Entitlement。
-- **本機偏好保存**：所有使用者設定（選取的行事曆、視窗尺寸、外觀、登入啟動等）皆只保存在本機 `UserDefaults`。
+- **本機偏好保存**：所有使用者設定（選取的行事曆、視窗尺寸、外觀、語言、登入啟動等）皆只保存在本機 `UserDefaults`。
 
 ---
 
-## 執行與開發
+## 本機執行與開發
 
 ### 1. 透過 Swift Package Manager 執行 (開發推薦)
 
@@ -57,6 +80,9 @@ swift test
 ```sh
 # 編譯並匯出獨立 .app 套件
 ./scripts/build_and_archive.sh
+
+# 產生 Homebrew Cask 定義
+./scripts/generate_cask.sh 1.0.0
 
 # 啟動最新建置的 App
 open "build/Export/Mac Menubar Calendar.app"

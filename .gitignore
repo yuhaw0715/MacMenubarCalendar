@@ -1,6 +1,7 @@
-# Xcode
+# Build outputs
 .build/
 build/
+releases/
 DerivedData/
 *.xcuserstate
 project.xcworkspace/xcuserdata/
