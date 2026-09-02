@@ -11,11 +11,21 @@ public enum AppStrings {
     }
 
     public static var bundle: Bundle {
-        #if SWIFT_PACKAGE
-        return Bundle.module
-        #else
+        // 1. Check if resource bundle exists in Bundle.main.resourceURL (.app/Contents/Resources/)
+        if let resourceURL = Bundle.main.resourceURL,
+           let resourceBundle = Bundle(url: resourceURL.appendingPathComponent("MacMenubarCalendar_MacMenubarCalendar.bundle")) {
+            return resourceBundle
+        }
+        // 2. Check if .lproj exists directly in Bundle.main
+        if Bundle.main.path(forResource: "zh-Hant", ofType: "lproj") != nil {
+            return Bundle.main
+        }
+        // 3. Check adjacent folder (for swift run / SPM bin directory)
+        let mainDir = Bundle.main.bundleURL
+        if let spmBundle = Bundle(url: mainDir.appendingPathComponent("MacMenubarCalendar_MacMenubarCalendar.bundle")) {
+            return spmBundle
+        }
         return Bundle.main
-        #endif
     }
 
     public static func localized(_ key: String, language: AppLanguage? = nil) -> String {
