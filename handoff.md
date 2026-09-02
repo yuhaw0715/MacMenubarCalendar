@@ -1,7 +1,7 @@
 # Mac Menubar Calendar - 專案交接文件 (Handoff)
 
 **更新時間**：2026-09-02  
-**當前版本**：v1.0.0  
+**當前版本**：v1.1.0  
 **專案位置**：`/Users/yuhao/Projects/MacMenubarCalendar`  
 **Homebrew Tap 儲存庫**：`yuhaw0715/homebrew-tap` (`/Users/yuhao/Projects/homebrew-tap`)  
 **Skill 專案儲存庫**：`yuhaw0715/YuhaoSkills` (`/Users/yuhao/Projects/YuhaoSkills`)

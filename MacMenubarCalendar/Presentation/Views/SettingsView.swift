@@ -177,7 +177,8 @@ public struct SettingsView: View {
                             .foregroundColor(.secondary)
 
                         HStack {
-                            Text("Mac Menubar Calendar v1.0.0")
+                            let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.1.0"
+                            Text("Mac Menubar Calendar v\(appVersion)")
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                             Spacer()
