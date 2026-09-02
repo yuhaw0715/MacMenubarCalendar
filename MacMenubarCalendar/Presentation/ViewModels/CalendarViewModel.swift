@@ -27,6 +27,7 @@ public final class CalendarViewModel: ObservableObject {
     @Published public var isShowingSettings: Bool = false
     @Published public var isPinned: Bool = false
     @Published public var appearanceMode: AppearanceMode = .system
+    @Published public var appLanguage: AppLanguage = .system
     @Published public var showDeclinedEvents: Bool = false
     @Published public var launchAtLogin: Bool = false
     @Published public private(set) var isLoading: Bool = false
@@ -64,9 +65,11 @@ public final class CalendarViewModel: ObservableObject {
         self.selectedCalendarIds = preferencesStore.selectedCalendarIds
         self.showDeclinedEvents = preferencesStore.showDeclinedEvents
         self.appearanceMode = preferencesStore.appearanceMode
+        self.appLanguage = preferencesStore.appLanguage
         self.launchAtLogin = loginItemManager.isEnabled
         self.isPinned = preferencesStore.isPinned
 
+        AppStrings.currentLanguage = self.appLanguage
         updateTodayDateNumber()
         setupNotificationListeners()
     }
@@ -210,6 +213,13 @@ public final class CalendarViewModel: ObservableObject {
         preferencesStore.appearanceMode = mode
     }
 
+    public func setAppLanguage(_ language: AppLanguage) {
+        appLanguage = language
+        preferencesStore.appLanguage = language
+        AppStrings.currentLanguage = language
+        rebuildDayCells()
+    }
+
     public func toggleLaunchAtLogin() {
         let nextValue = !launchAtLogin
         do {
@@ -262,6 +272,7 @@ public final class CalendarViewModel: ObservableObject {
     }
 
     public func handleDateOrTimeZoneChanged() {
+        AppStrings.currentLanguage = appLanguage
         updateTodayDateNumber()
         startDate = gridCalculator.resetToToday(now: clock.now, calendar: clock.calendar)
         Task {

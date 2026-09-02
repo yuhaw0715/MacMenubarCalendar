@@ -43,7 +43,7 @@ public struct DayCellView: View {
     }
 
     private var isZhLocale: Bool {
-        Locale.current.language.languageCode?.identifier == "zh" || Locale.current.identifier.starts(with: "zh")
+        AppStrings.currentLanguage.isChinese()
     }
 
     public var body: some View {

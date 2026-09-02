@@ -35,17 +35,18 @@ public struct LunarDateHelper {
     }
 
     /// Formats solar day string (e.g. "8月1日" for 1st of month, or "26日")
-    public static func solarDayString(for date: Date, calendar: Calendar) -> String {
+    public static func solarDayString(for date: Date, calendar: Calendar, language: AppLanguage = AppStrings.currentLanguage) -> String {
         let day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
 
-        let isZh = Locale.current.language.languageCode?.identifier == "zh" || Locale.current.identifier.starts(with: "zh")
+        let isZh = language.isChinese()
 
         if day == 1 {
             if isZh {
                 return "\(month)月1日"
             } else {
                 let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "en_US")
                 formatter.dateFormat = "MMM d"
                 return formatter.string(from: date)
             }

@@ -6,9 +6,9 @@ public struct MenubarIconRenderer {
     public static func createStackedIcon(
         date: Date,
         calendar: Calendar = .current,
-        locale: Locale = .current
+        language: AppLanguage = .system
     ) -> NSImage {
-        let isZh = locale.language.languageCode?.identifier == "zh" || locale.identifier.starts(with: "zh")
+        let isZh = language.isChinese()
 
         let monthNumber = calendar.component(.month, from: date)
         let dayNumber = calendar.component(.day, from: date)

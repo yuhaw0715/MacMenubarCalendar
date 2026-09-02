@@ -21,6 +21,7 @@ final class PreferencesTests: XCTestCase {
         let store = AppPreferencesStore(userDefaults: userDefaults)
         XCTAssertFalse(store.showDeclinedEvents)
         XCTAssertEqual(store.appearanceMode, .system)
+        XCTAssertEqual(store.appLanguage, .system)
         XCTAssertFalse(store.launchAtLogin)
         XCTAssertFalse(store.isPinned)
         XCTAssertEqual(store.windowWidth, 720.0)
@@ -32,6 +33,7 @@ final class PreferencesTests: XCTestCase {
         let store = AppPreferencesStore(userDefaults: userDefaults)
         store.showDeclinedEvents = true
         store.appearanceMode = .dark
+        store.appLanguage = .en
         store.isPinned = true
         store.windowWidth = 800.0
         store.windowHeight = 600.0
@@ -41,6 +43,7 @@ final class PreferencesTests: XCTestCase {
         let reloadedStore = AppPreferencesStore(userDefaults: userDefaults)
         XCTAssertTrue(reloadedStore.showDeclinedEvents)
         XCTAssertEqual(reloadedStore.appearanceMode, .dark)
+        XCTAssertEqual(reloadedStore.appLanguage, .en)
         XCTAssertTrue(reloadedStore.isPinned)
         XCTAssertEqual(reloadedStore.windowWidth, 800.0)
         XCTAssertEqual(reloadedStore.windowHeight, 600.0)

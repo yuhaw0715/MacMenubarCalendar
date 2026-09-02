@@ -129,6 +129,22 @@ public struct SettingsView: View {
                             .pickerStyle(.segmented)
                             .frame(width: 220)
                         }
+
+                        // Language
+                        HStack {
+                            Text(AppStrings.localized("settings.language.title"))
+                            Spacer()
+                            Picker("", selection: Binding(
+                                get: { viewModel.appLanguage },
+                                set: { viewModel.setAppLanguage($0) }
+                            )) {
+                                ForEach(AppLanguage.allCases) { lang in
+                                    Text(lang.localizedTitle).tag(lang)
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                            .frame(width: 220)
+                        }
                     }
 
                     Divider()

@@ -11,6 +11,7 @@ public final class AppPreferencesStore: ObservableObject, PreferencesStoreProtoc
         static let selectedCalendarIds = "selectedCalendarIds"
         static let showDeclinedEvents = "showDeclinedEvents"
         static let appearanceMode = "appearanceMode"
+        static let appLanguage = "appLanguage"
         static let launchAtLogin = "launchAtLogin"
         static let windowWidth = "windowWidth"
         static let windowHeight = "windowHeight"
@@ -26,6 +27,7 @@ public final class AppPreferencesStore: ObservableObject, PreferencesStoreProtoc
         userDefaults.register(defaults: [
             Keys.showDeclinedEvents: false,
             Keys.appearanceMode: AppearanceMode.system.rawValue,
+            Keys.appLanguage: AppLanguage.system.rawValue,
             Keys.launchAtLogin: false,
             Keys.windowWidth: 720.0,
             Keys.windowHeight: 500.0,
@@ -70,6 +72,20 @@ public final class AppPreferencesStore: ObservableObject, PreferencesStoreProtoc
         }
         set {
             userDefaults.set(newValue.rawValue, forKey: Keys.appearanceMode)
+            objectWillChange.send()
+        }
+    }
+
+    public var appLanguage: AppLanguage {
+        get {
+            guard let raw = userDefaults.string(forKey: Keys.appLanguage),
+                  let lang = AppLanguage(rawValue: raw) else {
+                return .system
+            }
+            return lang
+        }
+        set {
+            userDefaults.set(newValue.rawValue, forKey: Keys.appLanguage)
             objectWillChange.send()
         }
     }

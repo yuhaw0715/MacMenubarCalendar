@@ -29,6 +29,10 @@
 "settings.appearance.system" = "System";
 "settings.appearance.light" = "Light";
 "settings.appearance.dark" = "Dark";
+"settings.language.title" = "Language";
+"settings.language.system" = "System";
+"settings.language.zh_hant" = "繁體中文";
+"settings.language.en" = "English";
 "settings.about.title" = "About & Privacy";
 "settings.about.privacy_note" = "Strictly read-only calendar viewer with zero telemetry. All preferences are stored locally.";
 "settings.open_privacy_settings" = "Open Privacy Settings…";

@@ -23,24 +23,24 @@ public final class StatusItemController: NSObject, NSMenuDelegate {
         button.target = self
         button.action = #selector(statusItemClicked(_:))
         button.sendAction(on: [.leftMouseUp, .rightMouseUp])
-        updateStatusItemIcon(date: viewModel.currentDate)
+        updateStatusItemIcon(date: viewModel.currentDate, language: viewModel.appLanguage)
     }
 
     private func bindViewModel() {
-        viewModel.$currentDate
-            .sink { [weak self] date in
-                self?.updateStatusItemIcon(date: date)
+        Publishers.CombineLatest(viewModel.$currentDate, viewModel.$appLanguage)
+            .sink { [weak self] date, language in
+                self?.updateStatusItemIcon(date: date, language: language)
             }
             .store(in: &cancellables)
     }
 
-    private func updateStatusItemIcon(date: Date) {
+    private func updateStatusItemIcon(date: Date, language: AppLanguage) {
         guard let button = statusItem.button else { return }
 
         let image = MenubarIconRenderer.createStackedIcon(
             date: date,
             calendar: viewModel.calendar,
-            locale: Locale.current
+            language: language
         )
 
         button.image = image
@@ -48,7 +48,7 @@ public final class StatusItemController: NSObject, NSMenuDelegate {
         button.title = ""
         button.attributedTitle = NSAttributedString()
 
-        let isZh = Locale.current.language.languageCode?.identifier == "zh" || Locale.current.identifier.starts(with: "zh")
+        let isZh = language.isChinese()
         let monthNumber = viewModel.calendar.component(.month, from: date)
         let dayNumber = viewModel.calendar.component(.day, from: date)
 

@@ -1,7 +1,15 @@
 import Foundation
 import SwiftUI
+import os
 
 public enum AppStrings {
+    private static let _currentLanguage = OSAllocatedUnfairLock(initialState: AppLanguage.system)
+
+    public static var currentLanguage: AppLanguage {
+        get { _currentLanguage.withLock { $0 } }
+        set { _currentLanguage.withLock { $0 = newValue } }
+    }
+
     public static var bundle: Bundle {
         #if SWIFT_PACKAGE
         return Bundle.module
@@ -10,14 +18,25 @@ public enum AppStrings {
         #endif
     }
 
-    public static func localized(_ key: String) -> String {
-        let val = bundle.localizedString(forKey: key, value: nil, table: nil)
-        if val != key {
-            return val
+    public static func localized(_ key: String, language: AppLanguage? = nil) -> String {
+        let lang = language ?? currentLanguage
+        let isZh = lang.isChinese()
+        let lprojName = isZh ? "zh-Hant" : "en"
+
+        if let path = bundle.path(forResource: lprojName, ofType: "lproj"),
+           let lprojBundle = Bundle(path: path) {
+            let val = lprojBundle.localizedString(forKey: key, value: nil, table: nil)
+            if val != key {
+                return val
+            }
+        } else {
+            let val = bundle.localizedString(forKey: key, value: nil, table: nil)
+            if val != key {
+                return val
+            }
         }
 
-        // Fallback for when bundle lookup doesn't find the key
-        let isZh = Locale.current.language.languageCode?.identifier == "zh" || Locale.current.identifier.starts(with: "zh")
+        // Comprehensive Fallback Dictionary
         if isZh {
             switch key {
             case "header.nav.today": return "今天"
@@ -36,7 +55,7 @@ public enum AppStrings {
             case "cell.more_events": return "還有 %d 筆"
             case "day_detail.no_events": return "當日沒有行程"
             case "event.all_day": return "全天"
-            case "event.status.declined": return "已拒絕"
+            case "event.status.declined": return "已拒送"
             case "event.detail.start": return "開始"
             case "event.detail.end": return "結束"
             case "event.location": return "地點"
@@ -50,9 +69,19 @@ public enum AppStrings {
             case "settings.appearance.system": return "跟隨系統"
             case "settings.appearance.light": return "淺色"
             case "settings.appearance.dark": return "深色"
+            case "settings.language.title": return "語言"
+            case "settings.language.system": return "跟隨系統"
+            case "settings.language.zh_hant": return "繁體中文"
+            case "settings.language.en": return "English"
             case "settings.about.title": return "關於與隱私"
             case "settings.about.privacy_note": return "本 App 為唯讀檢視器，不收集資料，所有偏好僅保存於本機。"
             case "settings.open_privacy_settings": return "開啟系統隱私設定…"
+            case "permission.welcome.title": return "歡迎使用 Mac Menubar Calendar"
+            case "permission.welcome.description": return "Mac Menubar Calendar 需要行事曆存取權限以在選單列中顯示您的近期行程。本 App 嚴格維持唯讀，絕不建立、修改或刪除任何資料。"
+            case "permission.grant_button": return "授予行事曆權限"
+            case "permission.denied.title": return "需要行事曆權限"
+            case "permission.denied.description": return "行事曆存取權限已遭拒絕或受系統限制。請前往 macOS「系統設定」>「隱私權與安全性」>「行事曆」開啟權限。"
+            case "permission.open_settings_button": return "開啟系統設定"
             default: return key
             }
         } else {
@@ -87,16 +116,26 @@ public enum AppStrings {
             case "settings.appearance.system": return "System"
             case "settings.appearance.light": return "Light"
             case "settings.appearance.dark": return "Dark"
+            case "settings.language.title": return "Language"
+            case "settings.language.system": return "System"
+            case "settings.language.zh_hant": return "繁體中文"
+            case "settings.language.en": return "English"
             case "settings.about.title": return "About & Privacy"
             case "settings.about.privacy_note": return "Strictly read-only calendar viewer with zero telemetry. All preferences are stored locally."
             case "settings.open_privacy_settings": return "Open Privacy Settings…"
+            case "permission.welcome.title": return "Welcome to Mac Menubar Calendar"
+            case "permission.welcome.description": return "Mac Menubar Calendar needs access to your calendars to display upcoming events in your menu bar. This app is strictly read-only and never modifies or deletes your data."
+            case "permission.grant_button": return "Grant Calendar Access"
+            case "permission.denied.title": return "Calendar Access Required"
+            case "permission.denied.description": return "Calendar access was denied or restricted. Please enable calendar access in macOS System Settings > Privacy & Security > Calendars."
+            case "permission.open_settings_button": return "Open System Settings"
             default: return key
             }
         }
     }
 
-    public static func localizedFormat(_ key: String, _ arguments: CVarArg...) -> String {
-        let format = localized(key)
+    public static func localizedFormat(_ key: String, language: AppLanguage? = nil, _ arguments: CVarArg...) -> String {
+        let format = localized(key, language: language)
         return String(format: format, arguments: arguments)
     }
 }

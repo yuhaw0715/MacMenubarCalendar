@@ -29,6 +29,10 @@
 "settings.appearance.system" = "跟隨系統";
 "settings.appearance.light" = "淺色";
 "settings.appearance.dark" = "深色";
+"settings.language.title" = "語言";
+"settings.language.system" = "跟隨系統";
+"settings.language.zh_hant" = "繁體中文";
+"settings.language.en" = "English";
 "settings.about.title" = "關於與隱私";
 "settings.about.privacy_note" = "本 App 為唯讀檢視器，不收集資料，所有偏好僅保存於本機。";
 "settings.open_privacy_settings" = "開啟系統隱私設定…";
