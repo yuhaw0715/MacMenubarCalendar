@@ -39,11 +39,11 @@ public struct HeaderControlsView: View {
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
-                .help(NSLocalizedString("header.nav.prev_week", comment: ""))
-                .accessibilityLabel(NSLocalizedString("header.nav.prev_week", comment: ""))
+                .help(AppStrings.localized("header.nav.prev_week"))
+                .accessibilityLabel(AppStrings.localized("header.nav.prev_week"))
 
                 Button(action: { viewModel.resetToToday() }) {
-                    Text(NSLocalizedString("header.nav.today", comment: ""))
+                    Text(AppStrings.localized("header.nav.today"))
                         .font(.system(size: 11.5, weight: .medium))
                         .foregroundColor(.white)
                         .padding(.horizontal, 8)
@@ -51,8 +51,8 @@ public struct HeaderControlsView: View {
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
-                .help(NSLocalizedString("header.nav.today", comment: ""))
-                .accessibilityLabel(NSLocalizedString("header.nav.today", comment: ""))
+                .help(AppStrings.localized("header.nav.today"))
+                .accessibilityLabel(AppStrings.localized("header.nav.today"))
 
                 Button(action: { viewModel.nextWeek() }) {
                     Image(systemName: "chevron.right")
@@ -62,8 +62,8 @@ public struct HeaderControlsView: View {
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
-                .help(NSLocalizedString("header.nav.next_week", comment: ""))
-                .accessibilityLabel(NSLocalizedString("header.nav.next_week", comment: ""))
+                .help(AppStrings.localized("header.nav.next_week"))
+                .accessibilityLabel(AppStrings.localized("header.nav.next_week"))
             }
             .background(
                 Capsule()
@@ -81,8 +81,8 @@ public struct HeaderControlsView: View {
                         .frame(width: 26, height: 26)
                 }
                 .buttonStyle(.plain)
-                .help(NSLocalizedString("header.action.refresh", comment: ""))
-                .accessibilityLabel(NSLocalizedString("header.action.refresh", comment: ""))
+                .help(AppStrings.localized("header.action.refresh"))
+                .accessibilityLabel(AppStrings.localized("header.action.refresh"))
 
                 Button(action: { viewModel.togglePin() }) {
                     Image(systemName: viewModel.isPinned ? "pin.fill" : "pin")
@@ -91,8 +91,8 @@ public struct HeaderControlsView: View {
                         .frame(width: 26, height: 26)
                 }
                 .buttonStyle(.plain)
-                .help(NSLocalizedString(viewModel.isPinned ? "header.action.unpin" : "header.action.pin", comment: ""))
-                .accessibilityLabel(NSLocalizedString(viewModel.isPinned ? "header.action.unpin" : "header.action.pin", comment: ""))
+                .help(AppStrings.localized(viewModel.isPinned ? "header.action.unpin" : "header.action.pin"))
+                .accessibilityLabel(AppStrings.localized(viewModel.isPinned ? "header.action.unpin" : "header.action.pin"))
 
                 Button(action: { viewModel.isShowingSettings.toggle() }) {
                     Image(systemName: "gearshape")
@@ -101,8 +101,8 @@ public struct HeaderControlsView: View {
                         .frame(width: 26, height: 26)
                 }
                 .buttonStyle(.plain)
-                .help(NSLocalizedString("header.action.settings", comment: ""))
-                .accessibilityLabel(NSLocalizedString("header.action.settings", comment: ""))
+                .help(AppStrings.localized("header.action.settings"))
+                .accessibilityLabel(AppStrings.localized("header.action.settings"))
 
                 Button(action: onQuit) {
                     Image(systemName: "power")
@@ -111,8 +111,8 @@ public struct HeaderControlsView: View {
                         .frame(width: 26, height: 26)
                 }
                 .buttonStyle(.plain)
-                .help(NSLocalizedString("action.quit", comment: ""))
-                .accessibilityLabel(NSLocalizedString("action.quit", comment: ""))
+                .help(AppStrings.localized("action.quit"))
+                .accessibilityLabel(AppStrings.localized("action.quit"))
             }
         }
         .padding(.horizontal, 16)

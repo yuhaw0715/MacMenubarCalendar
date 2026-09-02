@@ -21,6 +21,7 @@ public final class CalendarViewModel: ObservableObject {
     @Published public private(set) var startDate: Date
     @Published public private(set) var dayCells: [DayCellData] = []
     @Published public private(set) var todayDateNumber: String = ""
+    @Published public private(set) var currentDate: Date = Date()
     @Published public var selectedDay: Date?
     @Published public var selectedEvent: CalendarEvent?
     @Published public var isShowingSettings: Bool = false
@@ -270,7 +271,9 @@ public final class CalendarViewModel: ObservableObject {
 
     private func updateTodayDateNumber() {
         let cal = clock.calendar
-        let day = cal.component(.day, from: clock.now)
+        let now = clock.now
+        currentDate = now
+        let day = cal.component(.day, from: now)
         todayDateNumber = "\(day)"
     }
 

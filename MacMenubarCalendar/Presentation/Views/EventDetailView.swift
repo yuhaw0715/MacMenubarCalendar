@@ -37,7 +37,7 @@ public struct EventDetailView: View {
                     HStack(spacing: 4) {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 11, weight: .semibold))
-                        Text("action.back")
+                        Text(AppStrings.localized("action.back"))
                             .font(.system(size: 12, weight: .medium))
                     }
                     .padding(.horizontal, 8)
@@ -49,7 +49,7 @@ public struct EventDetailView: View {
                 Spacer()
 
                 Button(action: { onOpenInCalendar(event) }) {
-                    Label("action.open_in_calendar", systemImage: "calendar")
+                    Label(AppStrings.localized("action.open_in_calendar"), systemImage: "calendar")
                         .font(.system(size: 11, weight: .medium))
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
@@ -79,13 +79,13 @@ public struct EventDetailView: View {
                                 .foregroundColor(.secondary)
                         }
 
-                        Text(event.title.isEmpty ? NSLocalizedString("event.untitled", comment: "") : event.title)
+                        Text(event.title.isEmpty ? AppStrings.localized("event.untitled") : event.title)
                             .font(.system(size: 16, weight: .bold))
                             .foregroundColor(event.isStatusDeclined ? .secondary : .primary)
                             .strikethrough(event.isStatusDeclined, color: .secondary)
 
                         if event.isStatusDeclined {
-                            Text("event.status.declined")
+                            Text(AppStrings.localized("event.status.declined"))
                                 .font(.caption2)
                                 .padding(.horizontal, 6)
                                 .padding(.vertical, 2)
@@ -111,7 +111,7 @@ public struct EventDetailView: View {
 
                             VStack(alignment: .leading, spacing: 2) {
                                 if event.isAllDay {
-                                    Text("event.all_day")
+                                    Text(AppStrings.localized("event.all_day"))
                                         .font(.system(size: 12, weight: .semibold))
                                     Text(dateFormatter.string(from: event.startDate))
                                         .font(.caption)

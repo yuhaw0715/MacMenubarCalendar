@@ -96,7 +96,7 @@ public struct DayCellView: View {
                         if event.isAllDay {
                             // All-day Event Banner
                             HStack(spacing: 3) {
-                                Text(event.title.isEmpty ? NSLocalizedString("event.untitled", comment: "") : event.title)
+                                Text(event.title.isEmpty ? AppStrings.localized("event.untitled") : event.title)
                                     .font(.system(size: 10, weight: .bold))
                                     .foregroundColor(.white)
                                     .lineLimit(1)
@@ -117,7 +117,7 @@ public struct DayCellView: View {
                                     .fill(event.calendarColor)
                                     .frame(width: 5, height: 5)
 
-                                Text(event.title.isEmpty ? NSLocalizedString("event.untitled", comment: "") : event.title)
+                                Text(event.title.isEmpty ? AppStrings.localized("event.untitled") : event.title)
                                     .font(.system(size: 10, weight: .regular))
                                     .lineLimit(1)
                                     .truncationMode(.tail)
@@ -143,14 +143,14 @@ public struct DayCellView: View {
                     Button(action: {
                         onSelectDay(cellData.date)
                     }) {
-                        Text(String(format: NSLocalizedString("cell.more_events", comment: ""), cellData.hiddenCount))
+                        Text(AppStrings.localizedFormat("cell.more_events", cellData.hiddenCount))
                             .font(.system(size: 9.5, weight: .medium))
                             .foregroundColor(.white.opacity(0.55))
                             .padding(.horizontal, 3)
                             .padding(.vertical, 1)
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel(String(format: NSLocalizedString("cell.more_events", comment: ""), cellData.hiddenCount))
+                    .accessibilityLabel(AppStrings.localizedFormat("cell.more_events", cellData.hiddenCount))
                 }
             }
             .padding(.horizontal, 4)

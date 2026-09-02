@@ -13,13 +13,13 @@ public struct SettingsView: View {
         VStack(spacing: 0) {
             // Header
             HStack {
-                Text("settings.title")
+                Text(AppStrings.localized("settings.title"))
                     .font(.headline)
 
                 Spacer()
 
                 Button(action: onClose) {
-                    Text("action.done")
+                    Text(AppStrings.localized("action.done"))
                         .font(.body)
                         .fontWeight(.semibold)
                 }
@@ -34,13 +34,13 @@ public struct SettingsView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     // Calendars Section
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("settings.calendars.header")
+                        Text(AppStrings.localized("settings.calendars.header"))
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .foregroundColor(.secondary)
 
                         if viewModel.availableCalendars.isEmpty {
-                            Text("settings.calendars.none_available")
+                            Text(AppStrings.localized("settings.calendars.none_available"))
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         } else {
@@ -89,20 +89,20 @@ public struct SettingsView: View {
 
                     // General Preferences Section
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("settings.general.header")
+                        Text(AppStrings.localized("settings.general.header"))
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .foregroundColor(.secondary)
 
                         // Show Declined Events
-                        Toggle("settings.show_declined_events", isOn: Binding(
+                        Toggle(AppStrings.localized("settings.show_declined_events"), isOn: Binding(
                             get: { viewModel.showDeclinedEvents },
                             set: { _ in viewModel.toggleShowDeclinedEvents() }
                         ))
 
                         // Launch at Login
                         VStack(alignment: .leading, spacing: 4) {
-                            Toggle("settings.launch_at_login", isOn: Binding(
+                            Toggle(AppStrings.localized("settings.launch_at_login"), isOn: Binding(
                                 get: { viewModel.launchAtLogin },
                                 set: { _ in viewModel.toggleLaunchAtLogin() }
                             ))
@@ -116,14 +116,14 @@ public struct SettingsView: View {
 
                         // Appearance
                         HStack {
-                            Text("settings.appearance.title")
+                            Text(AppStrings.localized("settings.appearance.title"))
                             Spacer()
                             Picker("", selection: Binding(
                                 get: { viewModel.appearanceMode },
                                 set: { viewModel.setAppearanceMode($0) }
                             )) {
                                 ForEach(AppearanceMode.allCases) { mode in
-                                    Text(mode.localizedTitleKey).tag(mode)
+                                    Text(mode.localizedTitle).tag(mode)
                                 }
                             }
                             .pickerStyle(.segmented)
@@ -135,12 +135,12 @@ public struct SettingsView: View {
 
                     // Privacy & Info Section
                     VStack(alignment: .leading, spacing: 6) {
-                        Text("settings.about.title")
+                        Text(AppStrings.localized("settings.about.title"))
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .foregroundColor(.secondary)
 
-                        Text("settings.about.privacy_note")
+                        Text(AppStrings.localized("settings.about.privacy_note"))
                             .font(.caption)
                             .foregroundColor(.secondary)
 
@@ -149,7 +149,7 @@ public struct SettingsView: View {
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Button("settings.open_privacy_settings") {
+                            Button(AppStrings.localized("settings.open_privacy_settings")) {
                                 viewModel.openSystemPrivacySettings()
                             }
                             .font(.caption)
@@ -165,7 +165,7 @@ public struct SettingsView: View {
                         Button(action: {
                             NSApplication.shared.terminate(nil)
                         }) {
-                            Label("action.quit", systemImage: "power")
+                            Label(AppStrings.localized("action.quit"), systemImage: "power")
                                 .foregroundColor(.red)
                         }
                         .buttonStyle(.bordered)

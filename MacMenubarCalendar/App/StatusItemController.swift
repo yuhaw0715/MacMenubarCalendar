@@ -23,27 +23,38 @@ public final class StatusItemController: NSObject, NSMenuDelegate {
         button.target = self
         button.action = #selector(statusItemClicked(_:))
         button.sendAction(on: [.leftMouseUp, .rightMouseUp])
-        updateButtonTitle(viewModel.todayDateNumber)
+        updateStatusItemIcon(date: viewModel.currentDate)
     }
 
     private func bindViewModel() {
-        viewModel.$todayDateNumber
-            .sink { [weak self] dayNumber in
-                self?.updateButtonTitle(dayNumber)
+        viewModel.$currentDate
+            .sink { [weak self] date in
+                self?.updateStatusItemIcon(date: date)
             }
             .store(in: &cancellables)
     }
 
-    private func updateButtonTitle(_ dayNumber: String) {
+    private func updateStatusItemIcon(date: Date) {
         guard let button = statusItem.button else { return }
-        let title = dayNumber.isEmpty ? "\(Calendar.current.component(.day, from: Date()))" : dayNumber
 
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: NSFont.monospacedDigitSystemFont(ofSize: 13, weight: .semibold)
-        ]
-        button.attributedTitle = NSAttributedString(string: title, attributes: attributes)
-        button.toolTip = "Mac Menubar Calendar"
-        button.setAccessibilityLabel("Mac Menubar Calendar, 今日: \(title)")
+        let image = MenubarIconRenderer.createStackedIcon(
+            date: date,
+            calendar: viewModel.calendar,
+            locale: Locale.current
+        )
+
+        button.image = image
+        button.imagePosition = .imageOnly
+        button.title = ""
+        button.attributedTitle = NSAttributedString()
+
+        let isZh = Locale.current.language.languageCode?.identifier == "zh" || Locale.current.identifier.starts(with: "zh")
+        let monthNumber = viewModel.calendar.component(.month, from: date)
+        let dayNumber = viewModel.calendar.component(.day, from: date)
+
+        let dateDesc = isZh ? "\(monthNumber)月\(dayNumber)日" : "\(date.formatted(.dateTime.month().day()))"
+        button.toolTip = "Mac Menubar Calendar (\(dateDesc))"
+        button.setAccessibilityLabel("Mac Menubar Calendar, \(dateDesc)")
     }
 
     @objc private func statusItemClicked(_ sender: NSStatusBarButton) {
@@ -59,21 +70,21 @@ public final class StatusItemController: NSObject, NSMenuDelegate {
     private func showContextMenu(_ sender: NSStatusBarButton) {
         let menu = NSMenu()
 
-        let openItem = NSMenuItem(title: NSLocalizedString("action.open_in_calendar", comment: "開啟月曆"), action: #selector(openCalendarAction), keyEquivalent: "")
+        let openItem = NSMenuItem(title: AppStrings.localized("action.open_in_calendar"), action: #selector(openCalendarAction), keyEquivalent: "")
         openItem.target = self
         menu.addItem(openItem)
 
-        let refreshItem = NSMenuItem(title: NSLocalizedString("header.action.refresh", comment: "重新整理"), action: #selector(refreshAction), keyEquivalent: "r")
+        let refreshItem = NSMenuItem(title: AppStrings.localized("header.action.refresh"), action: #selector(refreshAction), keyEquivalent: "r")
         refreshItem.target = self
         menu.addItem(refreshItem)
 
-        let settingsItem = NSMenuItem(title: NSLocalizedString("settings.title", comment: "偏好設定"), action: #selector(openSettingsAction), keyEquivalent: ",")
+        let settingsItem = NSMenuItem(title: AppStrings.localized("settings.title"), action: #selector(openSettingsAction), keyEquivalent: ",")
         settingsItem.target = self
         menu.addItem(settingsItem)
 
         menu.addItem(NSMenuItem.separator())
 
-        let quitItem = NSMenuItem(title: NSLocalizedString("action.quit", comment: "結束 App"), action: #selector(quitAction), keyEquivalent: "q")
+        let quitItem = NSMenuItem(title: AppStrings.localized("action.quit"), action: #selector(quitAction), keyEquivalent: "q")
         quitItem.target = self
         menu.addItem(quitItem)
 

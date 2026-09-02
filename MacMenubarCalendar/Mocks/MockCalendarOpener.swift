@@ -11,16 +11,16 @@ public final class MockCalendarOpener: CalendarOpening, @unchecked Sendable {
     }
 
     public func openCalendar(for event: CalendarEvent) async -> Bool {
-        lock.lock()
-        defer { lock.unlock() }
-        openedEvents.append(event)
-        return shouldSucceed
+        lock.withLock {
+            openedEvents.append(event)
+            return shouldSucceed
+        }
     }
 
     public func openCalendar(at date: Date) async -> Bool {
-        lock.lock()
-        defer { lock.unlock() }
-        openedDates.append(date)
-        return shouldSucceed
+        lock.withLock {
+            openedDates.append(date)
+            return shouldSucceed
+        }
     }
 }

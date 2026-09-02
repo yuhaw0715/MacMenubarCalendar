@@ -43,7 +43,7 @@ public struct DayDetailView: View {
                     HStack(spacing: 4) {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 11, weight: .semibold))
-                        Text("action.back")
+                        Text(AppStrings.localized("action.back"))
                             .font(.system(size: 12, weight: .medium))
                     }
                     .padding(.horizontal, 8)
@@ -60,7 +60,7 @@ public struct DayDetailView: View {
                 Spacer()
 
                 Button(action: { onOpenInCalendar(date) }) {
-                    Label("action.open_in_calendar", systemImage: "calendar")
+                    Label(AppStrings.localized("action.open_in_calendar"), systemImage: "calendar")
                         .font(.system(size: 11, weight: .medium))
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
@@ -68,7 +68,7 @@ public struct DayDetailView: View {
                         .foregroundColor(.accentColor)
                 }
                 .buttonStyle(.plain)
-                .help("action.open_in_calendar")
+                .help(AppStrings.localized("action.open_in_calendar"))
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
@@ -83,7 +83,7 @@ public struct DayDetailView: View {
                     Image(systemName: "calendar.badge.clock")
                         .font(.system(size: 32))
                         .foregroundColor(.secondary)
-                    Text("day_detail.no_events")
+                    Text(AppStrings.localized("day_detail.no_events"))
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     Spacer()
@@ -103,7 +103,7 @@ public struct DayDetailView: View {
 
                                     VStack(alignment: .leading, spacing: 3) {
                                         HStack {
-                                            Text(event.title.isEmpty ? NSLocalizedString("event.untitled", comment: "") : event.title)
+                                            Text(event.title.isEmpty ? AppStrings.localized("event.untitled") : event.title)
                                                 .font(.system(size: 12.5, weight: .semibold))
                                                 .foregroundColor(event.isStatusDeclined ? .secondary : .primary)
                                                 .strikethrough(event.isStatusDeclined, color: .secondary)
@@ -111,7 +111,7 @@ public struct DayDetailView: View {
                                             Spacer()
 
                                             if event.isAllDay {
-                                                Text("event.all_day")
+                                                Text(AppStrings.localized("event.all_day"))
                                                     .font(.system(size: 10, weight: .semibold))
                                                     .foregroundColor(.white)
                                                     .padding(.horizontal, 6)
@@ -145,7 +145,7 @@ public struct DayDetailView: View {
                                 .background(
                                     RoundedRectangle(cornerRadius: 7)
                                         .fill(Color.primary.opacity(0.04))
-                                )
+                                 )
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 7)
                                         .stroke(Color.primary.opacity(0.08), lineWidth: 1)

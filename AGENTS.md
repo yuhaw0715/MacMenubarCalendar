@@ -7,17 +7,18 @@ Mac Menubar Calendar 是一個原生 macOS menubar 行事曆檢視程式。它�
 ## 文件與工作流程
 
 - 已確認需求以 `docs/requirements.md` 為準。
-- OpenSpec change 位於 `openspec/changes/build-mac-menubar-calendar/`。
+- 主規格位於 `openspec/specs/`，歷史變更歸檔於 `openspec/changes/archive/`。
 - proposal、design、specs、tasks 與其他專案文件使用繁體中文；API、程式碼及技術識別字可保留英文。
-- 實作前必須先確認對應 OpenSpec change；依 `tasks.md` 的順序工作並更新 checkbox。
+- 實作前必須先確認對應 OpenSpec 規格；若有新變更需先透過 OpenSpec 提案。
 - 需求或外部行為改變時，先更新需求與 OpenSpec artifacts，不可只修改程式碼。
-- 不得在未經使用者明確要求時 archive OpenSpec change、建立 release、推送 repository 或修改外部 Homebrew tap。
+- 不得在未經使用者明確要求時建立 release、推送 repository 或修改外部 Homebrew tap。
 
 ## 平台與技術限制
 
 - 最低支援 macOS 15 Sequoia。
 - 只支援 Apple Silicon（arm64）。
 - 使用 Swift、SwiftUI；只有 menubar、panel 或必要系統整合才使用 AppKit。
+- 同時支援 Xcode 專案建置與 Swift Package Manager（SPM，`swift run` / `swift test`）。
 - Bundle identifier 固定為 `com.yuhaw0715.MacMenubarCalendar`。
 - App 為純 menubar App，不顯示 Dock 圖示。
 - 啟用 App Sandbox。
@@ -40,11 +41,14 @@ Mac Menubar Calendar 是一個原生 macOS menubar 行事曆檢視程式。它�
 - 自動測試使用假行事曆資料，不得依賴或讀取開發者的真實行事曆。
 - 日期計算使用系統 Calendar 與半開區間，不以固定秒數推算天數。
 - 所有日期與事件歸屬依 Mac 目前系統時區計算。
+- 多語系字串統一透過 `AppStrings` 模組讀取，確保在 SPM `Bundle.module` 與 `.app` `Bundle.main` 環境下皆能正常解析並具備安全 Fallback。
+- 選單列圖示透過 `MenubarIconRenderer` 繪製雙層（月份/日期）Template 影像，並根據 `Locale` 自動切換中文（`9月`）與英文（`SEP`）。
 - 不引入 Core Data、SwiftData、iCloud、第三方同步 SDK 或遠端服務，除非需求與 OpenSpec 已明確更新並獲得確認。
 
 ## UI、在地化與輔助使用
 
 - 介面提供繁體中文與英文，其他語言回退英文；日期時間格式跟隨系統地區。
+- 支援農曆日期計算與顯示（`LunarDateHelper`）。
 - 支援 VoiceOver、完整鍵盤操作、清楚焦點順序、系統文字大小及提高對比。
 - 行事曆、選取狀態與事件狀態不得只靠顏色表達。
 - 使用 SwiftUI preview 或假資料驗證畫面，不得讓 preview 觸發真實 EventKit 授權。
@@ -54,7 +58,6 @@ Mac Menubar Calendar 是一個原生 macOS menubar 行事曆檢視程式。它�
 - 每項實作都應附上與風險相稱的單元測試、UI 測試或清楚的人工驗證紀錄。
 - 至少涵蓋 28 天邊界、跨月／跨年／閏年、夏令時間、時區變更、跨日事件、全天排序、拒絕邀請及權限狀態。
 - 修改後執行相關測試；發佈前執行完整測試與 Release build 驗證。
-- OpenSpec artifacts 修改後執行：`openspec validate build-mac-menubar-calendar --strict`。
 
 ## 發佈限制
 

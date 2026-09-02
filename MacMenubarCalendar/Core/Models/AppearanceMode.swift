@@ -8,7 +8,7 @@ public enum AppearanceMode: String, CaseIterable, Identifiable, Sendable, Codabl
 
     public var id: String { rawValue }
 
-    public var localizedTitleKey: LocalizedStringKey {
+    public var localizedKey: String {
         switch self {
         case .system:
             return "settings.appearance.system"
@@ -17,6 +17,14 @@ public enum AppearanceMode: String, CaseIterable, Identifiable, Sendable, Codabl
         case .dark:
             return "settings.appearance.dark"
         }
+    }
+
+    public var localizedTitleKey: LocalizedStringKey {
+        LocalizedStringKey(localizedKey)
+    }
+
+    public var localizedTitle: String {
+        AppStrings.localized(localizedKey)
     }
 
     public var colorScheme: ColorScheme? {

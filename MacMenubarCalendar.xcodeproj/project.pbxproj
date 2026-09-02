@@ -30,6 +30,8 @@
 		110100152C70000100000001 /* EventFilterAndSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200152C70000100000001 /* EventFilterAndSorter.swift */; };
 		110100162C70000100000001 /* DayLayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200162C70000100000001 /* DayLayoutEngine.swift */; };
 		1101002A2C70000100000001 /* LunarDateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102002B2C70000100000001 /* LunarDateHelper.swift */; };
+		1101002B2C70000100000001 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102002C2C70000100000001 /* AppStrings.swift */; };
+		1101002C2C70000100000001 /* MenubarIconRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102002D2C70000100000001 /* MenubarIconRenderer.swift */; };
 		110100172C70000100000001 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200172C70000100000001 /* CalendarViewModel.swift */; };
 		110100182C70000100000001 /* CalendarRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200182C70000100000001 /* CalendarRootView.swift */; };
 		110100192C70000100000001 /* HeaderControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200192C70000100000001 /* HeaderControlsView.swift */; };
@@ -106,6 +108,8 @@
 		110200152C70000100000001 /* EventFilterAndSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterAndSorter.swift; sourceTree = "<group>"; };
 		110200162C70000100000001 /* DayLayoutEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLayoutEngine.swift; sourceTree = "<group>"; };
 		1102002B2C70000100000001 /* LunarDateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarDateHelper.swift; sourceTree = "<group>"; };
+		1102002C2C70000100000001 /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
+		1102002D2C70000100000001 /* MenubarIconRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarIconRenderer.swift; sourceTree = "<group>"; };
 		110200172C70000100000001 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		110200182C70000100000001 /* CalendarRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRootView.swift; sourceTree = "<group>"; };
 		110200192C70000100000001 /* HeaderControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderControlsView.swift; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 				110200152C70000100000001 /* EventFilterAndSorter.swift */,
 				110200162C70000100000001 /* DayLayoutEngine.swift */,
 				1102002B2C70000100000001 /* LunarDateHelper.swift */,
+				1102002C2C70000100000001 /* AppStrings.swift */,
+				1102002D2C70000100000001 /* MenubarIconRenderer.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -506,6 +512,8 @@
 				110100152C70000100000001 /* EventFilterAndSorter.swift in Sources */,
 				110100162C70000100000001 /* DayLayoutEngine.swift in Sources */,
 				1101002A2C70000100000001 /* LunarDateHelper.swift in Sources */,
+				1101002B2C70000100000001 /* AppStrings.swift in Sources */,
+				1101002C2C70000100000001 /* MenubarIconRenderer.swift in Sources */,
 				110100172C70000100000001 /* CalendarViewModel.swift in Sources */,
 				110100182C70000100000001 /* CalendarRootView.swift in Sources */,
 				110100192C70000100000001 /* HeaderControlsView.swift in Sources */,

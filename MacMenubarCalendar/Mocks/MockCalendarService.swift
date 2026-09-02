@@ -21,23 +21,22 @@ public final class MockCalendarService: CalendarServiceProtocol, @unchecked Send
     }
 
     public var authorizationStatus: AuthorizationStatus {
-        lock.lock()
-        defer { lock.unlock() }
-        return stubbedAuthorizationStatus
+        lock.withLock {
+            stubbedAuthorizationStatus
+        }
     }
 
     public func requestAccess() async -> AuthorizationStatus {
-        lock.lock()
-        stubbedAuthorizationStatus = requestAccessResult
-        let status = stubbedAuthorizationStatus
-        lock.unlock()
-        return status
+        lock.withLock {
+            stubbedAuthorizationStatus = requestAccessResult
+            return stubbedAuthorizationStatus
+        }
     }
 
     public func fetchCalendars() async -> [CalendarSource] {
-        lock.lock()
-        defer { lock.unlock() }
-        return stubbedCalendars
+        lock.withLock {
+            stubbedCalendars
+        }
     }
 
     public func fetchEvents(
@@ -46,32 +45,30 @@ public final class MockCalendarService: CalendarServiceProtocol, @unchecked Send
         selectedCalendarIds: Set<String>?,
         includeDeclined: Bool
     ) async -> [CalendarEvent] {
-        lock.lock()
-        defer { lock.unlock() }
-
-        return stubbedEvents.filter { event in
-            if let selected = selectedCalendarIds, !selected.contains(event.calendarId) {
-                return false
+        lock.withLock {
+            stubbedEvents.filter { event in
+                if let selected = selectedCalendarIds, !selected.contains(event.calendarId) {
+                    return false
+                }
+                if !includeDeclined && event.isStatusDeclined {
+                    return false
+                }
+                // Overlap check: event.startDate < endDate && event.endDate > startDate
+                return event.startDate < endDate && event.endDate > startDate
             }
-            if !includeDeclined && event.isStatusDeclined {
-                return false
-            }
-            // Overlap check: event.startDate < endDate && event.endDate > startDate
-            return event.startDate < endDate && event.endDate > startDate
         }
     }
 
     public func setEventsDidChangeHandler(_ handler: (@Sendable () -> Void)?) {
-        lock.lock()
-        defer { lock.unlock() }
-        self.eventsDidChangeHandler = handler
+        lock.withLock {
+            self.eventsDidChangeHandler = handler
+        }
     }
 
     public func triggerEventsDidChange() {
-        let handler: (@Sendable () -> Void)?
-        lock.lock()
-        handler = self.eventsDidChangeHandler
-        lock.unlock()
+        let handler: (@Sendable () -> Void)? = lock.withLock {
+            self.eventsDidChangeHandler
+        }
         handler?()
     }
 }

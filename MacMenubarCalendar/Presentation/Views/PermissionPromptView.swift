@@ -24,18 +24,18 @@ public struct PermissionPromptView: View {
                     .font(.system(size: 48))
                     .foregroundColor(.accentColor)
 
-                Text("permission.welcome.title")
+                Text(AppStrings.localized("permission.welcome.title"))
                     .font(.title2)
                     .fontWeight(.bold)
 
-                Text("permission.welcome.description")
+                Text(AppStrings.localized("permission.welcome.description"))
                     .font(.body)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 30)
 
                 Button(action: onRequestAccess) {
-                    Text("permission.grant_button")
+                    Text(AppStrings.localized("permission.grant_button"))
                         .font(.body)
                         .fontWeight(.semibold)
                         .padding(.horizontal, 16)
@@ -47,18 +47,18 @@ public struct PermissionPromptView: View {
                     .font(.system(size: 48))
                     .foregroundColor(.orange)
 
-                Text("permission.denied.title")
+                Text(AppStrings.localized("permission.denied.title"))
                     .font(.title2)
                     .fontWeight(.bold)
 
-                Text("permission.denied.description")
+                Text(AppStrings.localized("permission.denied.description"))
                     .font(.body)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 30)
 
                 Button(action: onOpenSettings) {
-                    Text("permission.open_settings_button")
+                    Text(AppStrings.localized("permission.open_settings_button"))
                         .font(.body)
                         .fontWeight(.semibold)
                         .padding(.horizontal, 16)
