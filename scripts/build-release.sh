@@ -152,7 +152,10 @@ cask "mac-menubar-calendar" do
 
   postflight do
     system_command "/usr/bin/xattr",
-                   args: ["-d", "com.apple.quarantine", "#{appdir}/Mac Menubar Calendar.app"],
+                   args: ["-cr", "#{appdir}/Mac Menubar Calendar.app"],
+                   sudo: false
+    system_command "/usr/bin/open",
+                   args: ["#{appdir}/Mac Menubar Calendar.app"],
                    sudo: false
   end
 
