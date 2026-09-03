@@ -19,9 +19,9 @@ Mac Menubar Calendar 是一個原生 macOS menubar 行事曆檢視程式。它�
 - 只支援 Apple Silicon（arm64）。
 - 使用 Swift、SwiftUI；只有 menubar、panel 或必要系統整合才使用 AppKit。
 - 同時支援 Xcode 專案建置與 Swift Package Manager（SPM，`swift run` / `swift test`）。
-- 一鍵打包發佈腳本為 `scripts/build-release.sh`（支援自動組裝 `.app`、簽署、產出 `releases/MacMenubarCalendar-v{version}.zip` 與更新 `homebrew-tap` Cask）。
+- 一鍵打包發佈腳本為 `scripts/build-release.sh`（支援自動組裝 `.app`、簽署、產出 `releases/MacMenubarCalendar-v{version}.zip` 與更新 `homebrew-tap` Cask，並在 Cask `postflight` 自動執行 `xattr -cr` 與 `open` 確保安裝後即刻常駐並註冊啟動台 Launchpad 索引）。
 - Bundle identifier 固定為 `com.yuhaw0715.MacMenubarCalendar`。
-- App 為純 menubar App，不顯示 Dock 圖示。
+- App 為純 menubar App（`LSUIElement = true`），不顯示 Dock 圖示與 `Cmd + Tab` 列，專注常駐於 macOS 頂部選單列。
 - 啟用 App Sandbox。
 
 ## 安全與隱私
