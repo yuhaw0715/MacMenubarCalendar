@@ -89,6 +89,16 @@ if [[ -d "${PROJECT_ROOT}/MacMenubarCalendar/Resources/en.lproj" ]]; then
   ditto "${PROJECT_ROOT}/MacMenubarCalendar/Resources/en.lproj" "${APP_RESOURCES}/en.lproj"
 fi
 
+# Copy and verify AppIcon.icns
+if [[ ! -f "${PROJECT_ROOT}/MacMenubarCalendar/Resources/AppIcon.icns" ]]; then
+  log "產出 AppIcon.icns..."
+  swift -module-cache-path "${PROJECT_ROOT}/build/ModuleCache" "${PROJECT_ROOT}/scripts/generate_app_icon.swift"
+fi
+if [[ -f "${PROJECT_ROOT}/MacMenubarCalendar/Resources/AppIcon.icns" ]]; then
+  ditto "${PROJECT_ROOT}/MacMenubarCalendar/Resources/AppIcon.icns" "${APP_RESOURCES}/AppIcon.icns"
+fi
+[[ -f "${APP_RESOURCES}/AppIcon.icns" ]] || fail "找不到 AppIcon.icns: ${APP_RESOURCES}/AppIcon.icns"
+
 [[ -x "${APP_EXECUTABLE}" ]] || fail "App Bundle executable 沒有執行權限"
 
 log "使用簽署 identity『${CODESIGN_IDENTITY}』簽署 App Bundle..."

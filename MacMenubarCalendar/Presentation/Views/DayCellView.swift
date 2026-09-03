@@ -53,7 +53,7 @@ public struct DayCellView: View {
                 // Lunar Date (Left)
                 if isZhLocale && !lunarInfo.text.isEmpty {
                     Text(lunarInfo.text)
-                        .font(.system(size: 10.5, weight: .regular))
+                        .font(.system(size: 10, weight: .regular))
                         .foregroundColor(lunarInfo.isFirstDayOfMonth ? Color(red: 0.95, green: 0.4, blue: 0.4) : Color.white.opacity(0.45))
                         .underline(lunarInfo.isFirstDayOfMonth, color: Color(red: 0.95, green: 0.4, blue: 0.4))
                 }
@@ -64,28 +64,35 @@ public struct DayCellView: View {
                 if cellData.isToday {
                     HStack(spacing: 2) {
                         Circle()
-                            .fill(Color(red: 0.92, green: 0.22, blue: 0.22))
-                            .frame(width: 20, height: 20)
+                            .fill(
+                                LinearGradient(
+                                    colors: [Color(red: 0.94, green: 0.28, blue: 0.28), Color(red: 0.82, green: 0.18, blue: 0.18)],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .frame(width: 18, height: 18)
+                            .shadow(color: Color.red.opacity(0.35), radius: 2, x: 0, y: 1)
                             .overlay(
                                 Text("\(cellData.dayNumber)")
-                                    .font(.system(size: 11, weight: .bold))
+                                    .font(.system(size: 10.5, weight: .bold))
                                     .foregroundColor(.white)
                             )
 
                         if isZhLocale {
                             Text("日")
-                                .font(.system(size: 11.5, weight: .regular))
+                                .font(.system(size: 11, weight: .regular))
                                 .foregroundColor(.white.opacity(0.85))
                         }
                     }
                 } else {
                     Text(LunarDateHelper.solarDayString(for: cellData.date, calendar: Calendar.current))
-                        .font(.system(size: 11.5, weight: .regular))
+                        .font(.system(size: 11, weight: .regular))
                         .foregroundColor(.white.opacity(0.85))
                 }
             }
-            .padding(.top, 4)
-            .padding(.horizontal, 6)
+            .padding(.top, 3)
+            .padding(.horizontal, 3)
 
             // Events List in Cell
             VStack(alignment: .leading, spacing: 2) {
@@ -95,42 +102,42 @@ public struct DayCellView: View {
                     }) {
                         if event.isAllDay {
                             // All-day Event Banner
-                            HStack(spacing: 3) {
+                            HStack(spacing: 2) {
                                 Text(event.title.isEmpty ? AppStrings.localized("event.untitled") : event.title)
-                                    .font(.system(size: 10, weight: .bold))
+                                    .font(.system(size: 9.5, weight: .semibold))
                                     .foregroundColor(.white)
                                     .lineLimit(1)
                                     .truncationMode(.tail)
                                 Spacer(minLength: 0)
                             }
-                            .padding(.horizontal, 4)
+                            .padding(.horizontal, 3)
                             .padding(.vertical, 1.5)
                             .frame(height: 16)
                             .background(
-                                RoundedRectangle(cornerRadius: 3)
+                                RoundedRectangle(cornerRadius: 2.5)
                                     .fill(event.calendarColor.opacity(0.92))
                             )
                         } else {
                             // Timed Event Row: Dot + Title on Left, Time on Right
-                            HStack(spacing: 3) {
+                            HStack(spacing: 2.5) {
                                 Circle()
                                     .fill(event.calendarColor)
-                                    .frame(width: 5, height: 5)
+                                    .frame(width: 4.5, height: 4.5)
 
                                 Text(event.title.isEmpty ? AppStrings.localized("event.untitled") : event.title)
-                                    .font(.system(size: 10, weight: .regular))
+                                    .font(.system(size: 9.5, weight: .regular))
                                     .lineLimit(1)
                                     .truncationMode(.tail)
                                     .foregroundColor(event.isStatusDeclined ? .white.opacity(0.4) : .white.opacity(0.92))
                                     .strikethrough(event.isStatusDeclined, color: .white.opacity(0.4))
 
-                                Spacer(minLength: 2)
+                                Spacer(minLength: 1)
 
                                 Text(timeFormatter.string(from: event.startDate))
-                                    .font(.system(size: 9, weight: .regular, design: .monospaced))
+                                    .font(.system(size: 8.5, weight: .regular, design: .monospaced))
                                     .foregroundColor(.white.opacity(0.55))
                             }
-                            .padding(.horizontal, 3)
+                            .padding(.horizontal, 2)
                             .frame(height: 16)
                         }
                     }
@@ -144,22 +151,32 @@ public struct DayCellView: View {
                         onSelectDay(cellData.date)
                     }) {
                         Text(AppStrings.localizedFormat("cell.more_events", cellData.hiddenCount))
-                            .font(.system(size: 9.5, weight: .medium))
-                            .foregroundColor(.white.opacity(0.55))
-                            .padding(.horizontal, 3)
+                            .font(.system(size: 9, weight: .medium))
+                            .foregroundColor(.white.opacity(0.6))
+                            .padding(.horizontal, 2)
                             .padding(.vertical, 1)
                     }
                     .buttonStyle(.plain)
                     .accessibilityLabel(AppStrings.localizedFormat("cell.more_events", cellData.hiddenCount))
                 }
             }
-            .padding(.horizontal, 4)
+            .padding(.horizontal, 2)
 
             Spacer(minLength: 0)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(isHovered ? Color.white.opacity(0.04) : Color.clear)
-        .contentShape(Rectangle())
+        .background(
+            RoundedRectangle(cornerRadius: 4)
+                .fill(isHovered ? Color.white.opacity(0.08) : (cellData.isToday ? Color.white.opacity(0.05) : Color.white.opacity(0.025)))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 4)
+                .stroke(Color.white.opacity(isHovered ? 0.16 : 0.06), lineWidth: 0.5)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 4))
+        .shadow(color: isHovered ? Color.black.opacity(0.2) : Color.clear, radius: 2, x: 0, y: 1)
+        .contentShape(RoundedRectangle(cornerRadius: 4))
+        .animation(.easeInOut(duration: 0.12), value: isHovered)
         .onHover { hovering in
             isHovered = hovering
         }

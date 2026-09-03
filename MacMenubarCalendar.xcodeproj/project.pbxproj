@@ -52,6 +52,9 @@
 		110100262C70000100000001 /* MockCalendarOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200262C70000100000001 /* MockCalendarOpener.swift */; };
 		110100272C70000100000001 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 110200272C70000100000001 /* Localizable.strings */; };
 		110100282C70000100000001 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 110200282C70000100000001 /* InfoPlist.strings */; };
+		1101002F2C70000100000001 /* AppIconRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200302C70000100000001 /* AppIconRenderer.swift */; };
+		110100302C70000100000001 /* DynamicAppIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110200312C70000100000001 /* DynamicAppIconController.swift */; };
+		110100312C70000100000001 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 110200322C70000100000001 /* AppIcon.icns */; };
 
 		/* Test Files */
 		210100012C70000100000001 /* CalendarGridCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200012C70000100000001 /* CalendarGridCalculatorTests.swift */; };
@@ -61,6 +64,8 @@
 		210100052C70000100000001 /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200052C70000100000001 /* PreferencesTests.swift */; };
 		210100072C70000100000001 /* AppLanguageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200072C70000100000001 /* AppLanguageTests.swift */; };
 		210100062C70000100000001 /* PerformanceBenchmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200062C70000100000001 /* PerformanceBenchmarkTests.swift */; };
+		210100082C70000100000001 /* AppIconRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200082C70000100000001 /* AppIconRendererTests.swift */; };
+		210100092C70000100000001 /* DynamicAppIconControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210200092C70000100000001 /* DynamicAppIconControllerTests.swift */; };
 
 		/* UI Test Files */
 		310100012C70000100000001 /* MacMenubarCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310200012C70000100000001 /* MacMenubarCalendarUITests.swift */; };
@@ -133,6 +138,9 @@
 		110200262C70000100000001 /* MockCalendarOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCalendarOpener.swift; sourceTree = "<group>"; };
 		110200292C70000100000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1102002A2C70000100000001 /* MacMenubarCalendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacMenubarCalendar.entitlements; sourceTree = "<group>"; };
+		110200302C70000100000001 /* AppIconRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconRenderer.swift; sourceTree = "<group>"; };
+		110200312C70000100000001 /* DynamicAppIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicAppIconController.swift; sourceTree = "<group>"; };
+		110200322C70000100000001 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 
 		210200012C70000100000001 /* CalendarGridCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGridCalculatorTests.swift; sourceTree = "<group>"; };
 		210200022C70000100000001 /* DateBoundaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBoundaryTests.swift; sourceTree = "<group>"; };
@@ -141,6 +149,8 @@
 		210200052C70000100000001 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
 		210200072C70000100000001 /* AppLanguageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageTests.swift; sourceTree = "<group>"; };
 		210200062C70000100000001 /* PerformanceBenchmarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceBenchmarkTests.swift; sourceTree = "<group>"; };
+		210200082C70000100000001 /* AppIconRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconRendererTests.swift; sourceTree = "<group>"; };
+		210200092C70000100000001 /* DynamicAppIconControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicAppIconControllerTests.swift; sourceTree = "<group>"; };
 
 		310200012C70000100000001 /* MacMenubarCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacMenubarCalendarUITests.swift; sourceTree = "<group>"; };
 
@@ -263,6 +273,7 @@
 				110200112C70000100000001 /* AppLoginItemManager.swift */,
 				110200122C70000100000001 /* SystemCalendarOpener.swift */,
 				110200132C70000100000001 /* SystemNotificationWatcher.swift */,
+				110200312C70000100000001 /* DynamicAppIconController.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -276,6 +287,7 @@
 				1102002B2C70000100000001 /* LunarDateHelper.swift */,
 				1102002C2C70000100000001 /* AppStrings.swift */,
 				1102002D2C70000100000001 /* MenubarIconRenderer.swift */,
+				110200302C70000100000001 /* AppIconRenderer.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -341,6 +353,7 @@
 				1102002A2C70000100000001 /* MacMenubarCalendar.entitlements */,
 				110200272C70000100000001 /* Localizable.strings */,
 				110200282C70000100000001 /* InfoPlist.strings */,
+				110200322C70000100000001 /* AppIcon.icns */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -355,6 +368,8 @@
 				210200052C70000100000001 /* PreferencesTests.swift */,
 				210200072C70000100000001 /* AppLanguageTests.swift */,
 				210200062C70000100000001 /* PerformanceBenchmarkTests.swift */,
+				210200082C70000100000001 /* AppIconRendererTests.swift */,
+				210200092C70000100000001 /* DynamicAppIconControllerTests.swift */,
 			);
 			path = MacMenubarCalendarTests;
 			sourceTree = "<group>";
@@ -474,6 +489,7 @@
 			files = (
 				110100272C70000100000001 /* Localizable.strings in Resources */,
 				110100282C70000100000001 /* InfoPlist.strings in Resources */,
+				110100312C70000100000001 /* AppIcon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +541,8 @@
 				1101002A2C70000100000001 /* LunarDateHelper.swift in Sources */,
 				1101002B2C70000100000001 /* AppStrings.swift in Sources */,
 				1101002C2C70000100000001 /* MenubarIconRenderer.swift in Sources */,
+				1101002F2C70000100000001 /* AppIconRenderer.swift in Sources */,
+				110100302C70000100000001 /* DynamicAppIconController.swift in Sources */,
 				110100172C70000100000001 /* CalendarViewModel.swift in Sources */,
 				110100182C70000100000001 /* CalendarRootView.swift in Sources */,
 				110100192C70000100000001 /* HeaderControlsView.swift in Sources */,
@@ -555,6 +573,8 @@
 				210100052C70000100000001 /* PreferencesTests.swift in Sources */,
 				210100072C70000100000001 /* AppLanguageTests.swift in Sources */,
 				210100062C70000100000001 /* PerformanceBenchmarkTests.swift in Sources */,
+				210100082C70000100000001 /* AppIconRendererTests.swift in Sources */,
+				210100092C70000100000001 /* DynamicAppIconControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,14 +744,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = MacMenubarCalendar/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendar;
 				PRODUCT_MODULE_NAME = MacMenubarCalendar;
 				PRODUCT_NAME = "Mac Menubar Calendar";
@@ -748,14 +768,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = MacMenubarCalendar/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendar;
 				PRODUCT_MODULE_NAME = MacMenubarCalendar;
 				PRODUCT_NAME = "Mac Menubar Calendar";
@@ -771,14 +791,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -794,14 +814,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -816,14 +836,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendarUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -838,14 +858,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuhaw0715.MacMenubarCalendarUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;

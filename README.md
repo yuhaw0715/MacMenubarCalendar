@@ -14,14 +14,21 @@
   - 在頂部選單列顯示上下雙層的月份與日期（上層月份、下層兩位數日期）。
   - 自動依系統語言適配：中文環境顯示 `9月` / `02`，英文環境顯示 `SEP` / `02`。
   - 原生 Template 渲染，隨深淺色外觀與桌面桌布自動調整最佳對比度。
-- **1:1 原生 Apple 深色月檢視**：
-  - 一體化細格線連續 7 欄 × 4 列（28 天）**週對齊月曆網格**，自動依本週起始日為第一格排列。
-  - 頂部年月標題一律以網格第 1 格所在的年月顯示（例如「2026年 8月」或「August 2026」）。
-  - 完整支援**農曆與國曆雙日期標頭**（左上角顯示農曆初一、節氣或日期，右上角顯示國曆日期）。
-  - **今日標記**：Apple 標誌性正紅色實心圓徽章（白字 `31`）＋「日」，精準落在當週對應星期欄位。
-  - **全天行程膠囊**：滿版寬度圓角彩色橫幅（綠、藍、橘、棕等），白字加粗清晰排版。
+- **專屬即時日曆 App 圖示（方案 3A 側邊紅標籤活頁日曆風）**：
+  - 專為 macOS 打造的 Squircle 擬物化活頁日曆圖示，包含左側經典日曆紅索引書脊、撕頁虛線微投影、3 組金屬活頁環打孔眼與右側象牙白大日期數字。
+  - **即時動態日期顯示**：App 運作期間自動在午夜換日、時區切換或休眠喚醒時，將圖示更新為當前月份、日期與星期幾。
+  - **雙語系動態適配**：繁體中文模式呈現 `9月` / `週四`，英文模式呈現 `SEP` / `THU`。
+  - 內建 16x16 至 1024x1024 完整尺寸的標準 `AppIcon.icns`，在 Finder、Launchpad、系統設定登入項目與授權清單中皆精緻呈現。
+- **次世代 macOS 26 浮島微卡片月檢視（Soft Island 方案 C-4）**：
+  - **極致原生毛玻璃（Liquid Glass）**：底層全面採用系統級 `.ultraThinMaterial` 毛玻璃材質與景深保護層，隨桌面桌布自然呈現通透的光學景深與折射。
+  - **7 欄 × 4 列浮島微卡片（Soft Island Tiles）**：徹底捨棄傳統 1px 生硬切割線，改以 **1.5px 緊湊微間距**、**4px 圓角** 之獨立懸浮晶片卡片呈現，兼具立體層次與極高空間利用率。
+  - **滿版緊湊內部留白（Tight 2px Padding）**：儲存格內部留白精算縮窄至 2px，大幅擴展全天行程橫幅與定時行程的橫向可用寬度，顯著減少標題截斷。
+  - **晶透微外框與微光澤**：每張日期卡片附帶 0.5px 半透明晶透外框，滑鼠懸停（Hover）時具備細膩的動態聚光微光暈。
+  - **今日立體標記**：Apple 標誌性正紅色實心漸層圓徽章（白字日數）＋「日」，精準落在當週對應星期欄位並附帶柔和微外發光。
+  - **全天行程膠囊**：圓角彩色橫幅（綠、藍、橘、棕等），白字加粗清晰排版。
   - **指定時間行程**：左側顏色點＋行程名稱，右側精確對齊等寬時間（如 `18:00`、`17:30`）。
-  - **行程溢位展開**：超過可視空間時顯示「還有 N筆」，點擊可展開當日所有行程。
+  - **行程溢位展開**：超過可視空間時顯示「還有 N 個」，點擊可展開當日所有行程。
+  - 完整支援**農曆與國曆雙日期標頭**（左上角顯示農曆初一、節氣或日期，右上角顯示國曆日期）。
 - **直覺導覽與操作**：
   - 支援「上一週」、「下一週」以 7 天整週平滑切換，並提供「今天」一鍵快速回正至當週起始日。
   - 支援視窗自由縮放與釘選（Pin）功能，在失焦時可保持顯示。
@@ -107,6 +114,7 @@ MacMenubarCalendar/
 │   └── StatusItemController.swift
 ├── Core/                      # 核心業務邏輯、領域模型與服務協定
 │   ├── Logic/                 # 純邏輯運算 (月曆網格、排版引擎、農曆轉換、圖示渲染)
+│   │   ├── AppIconRenderer.swift
 │   │   ├── AppStrings.swift
 │   │   ├── CalendarGridCalculator.swift
 │   │   ├── DayLayoutEngine.swift
@@ -122,12 +130,19 @@ MacMenubarCalendar/
 │   │   ├── DayCellData.swift
 │   │   └── FirstDayOfWeek.swift
 │   ├── Protocols/             # 抽象服務介面 (供測試與 Mock 替換)
-│   └── Services/              # 系統服務實作 (EventKit、UserDefaults、時鐘、通知等)
+│   └── Services/              # 系統服務實作 (EventKit、UserDefaults、動態圖示控制器、通知監聽等)
+│       ├── AppLoginItemManager.swift
+│       ├── AppPreferencesStore.swift
+│       ├── DynamicAppIconController.swift
+│       ├── EventKitCalendarService.swift
+│       ├── SystemCalendarOpener.swift
+│       ├── SystemClock.swift
+│       └── SystemNotificationWatcher.swift
 ├── Presentation/              # 視圖模型與 SwiftUI / AppKit 介面層
 │   ├── Panel/                 # 原生浮動無邊框面板控制器 (NSPanel)
 │   ├── ViewModels/            # 視圖模型 (@Observable CalendarViewModel)
-│   └── Views/                 # SwiftUI 視圖組件 (月曆網格、單日單元格、設定頁面等)
-└── Resources/                 # 多語系資源檔 (.lproj)、Info.plist 與 Entitlements
+│   └── Views/                 # SwiftUI 視圖組件 (Soft Island 浮島網格、單日微卡片、設定頁面等)
+└── Resources/                 # 多語系資源檔 (.lproj)、AppIcon.icns、Info.plist 與 Entitlements
 ```
 
 ---

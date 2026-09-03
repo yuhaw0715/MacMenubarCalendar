@@ -1,3 +1,4 @@
+import AppKit
 import Foundation
 import Combine
 
@@ -18,11 +19,13 @@ public final class SystemNotificationWatcher: @unchecked Sendable {
 
     private func setupObservers() {
         let center = NotificationCenter.default
+        let wsCenter = NSWorkspace.shared.notificationCenter
 
-        Publishers.Merge3(
+        Publishers.Merge4(
             center.publisher(for: .NSCalendarDayChanged),
             center.publisher(for: .NSSystemTimeZoneDidChange),
-            center.publisher(for: .NSSystemClockDidChange)
+            center.publisher(for: .NSSystemClockDidChange),
+            wsCenter.publisher(for: NSWorkspace.didWakeNotification)
         )
         .receive(on: DispatchQueue.main)
         .sink { [weak self] _ in

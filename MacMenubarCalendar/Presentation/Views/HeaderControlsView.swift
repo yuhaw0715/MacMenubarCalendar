@@ -62,7 +62,11 @@ public struct HeaderControlsView: View {
             }
             .background(
                 Capsule()
-                    .fill(Color.white.opacity(0.1))
+                    .fill(Color.white.opacity(0.08))
+                    .overlay(
+                        Capsule()
+                            .stroke(Color.white.opacity(0.12), lineWidth: 0.5)
+                    )
             )
 
             // Right Actions: Refresh, Pin, Settings, Quit App
@@ -113,6 +117,6 @@ public struct HeaderControlsView: View {
         .padding(.horizontal, 16)
         .padding(.top, 12)
         .padding(.bottom, 8)
-        .background(Color(red: 0.12, green: 0.12, blue: 0.13))
+        .background(Color.clear)
     }
 }

@@ -44,11 +44,16 @@ Mac Menubar Calendar 是一個原生 macOS menubar 行事曆檢視程式。它�
 - 所有日期與事件歸屬依 Mac 目前系統時區計算。
 - 多語系字串統一透過 `AppStrings` 模組讀取，確保在 SPM `Bundle.module` 與 `.app` `Bundle.main` 環境下皆能正常解析並具備安全 Fallback。
 - 選單列圖示透過 `MenubarIconRenderer` 繪製雙層（月份/日期）Template 影像，並根據 `AppLanguage` 與 `Locale` 自動切換中文（`9月`）與英文（`SEP`）。
+- 應用程式圖示採用方案 3A（側邊紅標籤活頁日曆風），透過 `AppIconRenderer` 程式化繪製，並由 `DynamicAppIconController` 支援執行時即時換日、時區切換及中英文語系動態更新。
 - 偏好儲存（`AppPreferencesStore`）支援行事曆選擇、拒絕行程、外觀、語言模式（`AppLanguage`）及一週起始日（`FirstDayOfWeek`）。
 - 不引入 Core Data、SwiftData、iCloud、第三方同步 SDK 或遠端服務，除非需求與 OpenSpec 已明確更新並獲得確認。
 
 ## UI、在地化與輔助使用
 
+- 介面視覺採用 macOS 26 次世代美學（方案 C-4 Soft Island 極窄微邊界浮島風格）：
+  - 視窗底層以系統原生毛玻璃材質（`.ultraThinMaterial` / `NSVisualEffectView`）搭配半透明保護深色層，自然透出桌面背景景深，外觀自適應深淺色模式。
+  - 7×4 網格移除傳統 1px 硬割線，改採 28 個獨立的懸浮微晶片卡片（Soft Island Tiles），卡片間距為 1.5px、圓角為 4px、內部留白緊湊化至 2px，最大化文字與行程色條之橫向展示寬度。
+  - 卡片周圍具備 0.5px 半透明晶透微外框，Hover 支援平滑聚光光暈與輕柔陰影，今日日期採用現代高飽和立體微漸層圓標。
 - 介面提供繁體中文與英文，支援「跟隨系統」、「繁體中文」與「English」切換，未支援語言回退英文；日期時間格式跟隨系統地區。
 - 支援農曆日期計算與顯示（`LunarDateHelper`）。
 - 支援 VoiceOver、完整鍵盤操作、清楚焦點順序、系統文字大小及提高對比。

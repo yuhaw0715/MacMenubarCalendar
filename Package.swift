@@ -23,7 +23,8 @@ let package = Package(
             ],
             resources: [
                 .process("Resources/en.lproj"),
-                .process("Resources/zh-Hant.lproj")
+                .process("Resources/zh-Hant.lproj"),
+                .process("Resources/AppIcon.icns")
             ]
         ),
         .testTarget(

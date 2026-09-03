@@ -9,8 +9,13 @@ public struct CalendarRootView: View {
 
     public var body: some View {
         ZStack {
-            // Dark solid background matching Apple Calendar dark mode (#1E1E1E)
-            Color(red: 0.12, green: 0.12, blue: 0.13)
+            // Next-gen macOS Translucent Liquid Glass Material
+            Rectangle()
+                .fill(.ultraThinMaterial)
+                .ignoresSafeArea()
+
+            // Subtle dark tint to guarantee high contrast across varied wallpapers
+            Color.black.opacity(0.35)
                 .ignoresSafeArea()
 
             if viewModel.authorizationStatus != .authorized {
@@ -65,6 +70,11 @@ public struct CalendarRootView: View {
             }
         }
         .frame(minWidth: 560, minHeight: 420)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.white.opacity(0.12), lineWidth: 0.5)
+        )
         .preferredColorScheme(viewModel.appearanceMode.colorScheme)
         .onAppear {
             viewModel.onAppear()

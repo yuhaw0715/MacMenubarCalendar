@@ -30,6 +30,7 @@ public final class StatusItemController: NSObject, NSMenuDelegate {
         Publishers.CombineLatest(viewModel.$currentDate, viewModel.$appLanguage)
             .sink { [weak self] date, language in
                 self?.updateStatusItemIcon(date: date, language: language)
+                DynamicAppIconController.shared.updateIcon(forceDate: date, forceLanguage: language)
             }
             .store(in: &cancellables)
     }

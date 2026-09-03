@@ -20,97 +20,77 @@ public struct CalendarGridView: View {
                     if colIndex < weekdayHeaders.count {
                         Text(weekdayHeaders[colIndex])
                             .font(.system(size: 11, weight: .medium))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.white.opacity(0.65))
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, 4)
+                            .padding(.vertical, 5)
 
                         if colIndex < columns - 1 {
                             Divider()
-                                .frame(height: 14)
-                                .background(Color.white.opacity(0.12))
+                                .frame(height: 12)
+                                .background(Color.white.opacity(0.08))
                         }
                     } else {
                         Spacer()
                     }
                 }
             }
-            .background(Color(red: 0.14, green: 0.14, blue: 0.15))
+            .background(Color.white.opacity(0.04))
             .overlay(
                 Rectangle()
-                    .frame(height: 1)
-                    .foregroundColor(Color.white.opacity(0.12)),
+                    .frame(height: 0.5)
+                    .foregroundColor(Color.white.opacity(0.08)),
                 alignment: .bottom
             )
 
-            // Continuous 7x4 Grid Table
+            // Continuous 7x4 Soft Island Grid (Style C-4)
             GeometryReader { geometry in
-                let totalWidth = geometry.size.width
-                let totalHeight = geometry.size.height
-                let cellWidth = totalWidth / CGFloat(columns)
-                let cellHeight = totalHeight / CGFloat(rows)
+                let gap: CGFloat = 1.5
+                let horizontalPadding: CGFloat = 4
+                let verticalPadding: CGFloat = 4
 
-                ZStack(alignment: .topLeading) {
-                    // Grid Cells
-                    VStack(spacing: 0) {
-                        ForEach(0..<rows, id: \.self) { rowIndex in
-                            HStack(spacing: 0) {
-                                ForEach(0..<columns, id: \.self) { colIndex in
-                                    let index = rowIndex * columns + colIndex
-                                    if index < viewModel.dayCells.count {
-                                        let cellData = viewModel.dayCells[index]
-                                        DayCellView(
-                                            cellData: cellData,
-                                            onSelectDay: { date in
-                                                viewModel.selectDay(date)
-                                            },
-                                            onSelectEvent: { event in
-                                                viewModel.selectEvent(event)
-                                            }
-                                        )
+                let availableWidth = geometry.size.width - (horizontalPadding * 2)
+                let availableHeight = geometry.size.height - (verticalPadding * 2)
+
+                let cellWidth = max(0, (availableWidth - CGFloat(columns - 1) * gap) / CGFloat(columns))
+                let cellHeight = max(0, (availableHeight - CGFloat(rows - 1) * gap) / CGFloat(rows))
+
+                VStack(spacing: gap) {
+                    ForEach(0..<rows, id: \.self) { rowIndex in
+                        HStack(spacing: gap) {
+                            ForEach(0..<columns, id: \.self) { colIndex in
+                                let index = rowIndex * columns + colIndex
+                                if index < viewModel.dayCells.count {
+                                    let cellData = viewModel.dayCells[index]
+                                    DayCellView(
+                                        cellData: cellData,
+                                        onSelectDay: { date in
+                                            viewModel.selectDay(date)
+                                        },
+                                        onSelectEvent: { event in
+                                            viewModel.selectEvent(event)
+                                        }
+                                    )
+                                    .frame(width: cellWidth, height: cellHeight)
+                                } else {
+                                    Spacer()
                                         .frame(width: cellWidth, height: cellHeight)
-                                    } else {
-                                        Spacer()
-                                            .frame(width: cellWidth, height: cellHeight)
-                                    }
                                 }
                             }
                         }
                     }
-
-                    // Continuous Grid Divider Lines
-                    // Horizontal Lines
-                    VStack(spacing: 0) {
-                        ForEach(1..<rows, id: \.self) { _ in
-                            Spacer()
-                                .frame(height: cellHeight - 1)
-                            Rectangle()
-                                .fill(Color.white.opacity(0.12))
-                                .frame(height: 1)
-                        }
-                    }
-                    .allowsHitTesting(false)
-
-                    // Vertical Lines
-                    HStack(spacing: 0) {
-                        ForEach(1..<columns, id: \.self) { _ in
-                            Spacer()
-                                .frame(width: cellWidth - 1)
-                            Rectangle()
-                                .fill(Color.white.opacity(0.12))
-                                .frame(width: 1)
-                        }
-                    }
-                    .allowsHitTesting(false)
                 }
+                .padding(.horizontal, horizontalPadding)
+                .padding(.vertical, verticalPadding)
                 .onAppear {
                     viewModel.updateAvailableCellHeight(cellHeight)
                 }
                 .onChange(of: geometry.size) { _, newSize in
-                    let newCellHeight = newSize.height / CGFloat(rows)
+                    let newAvailHeight = newSize.height - (verticalPadding * 2)
+                    let newCellHeight = max(0, (newAvailHeight - CGFloat(rows - 1) * gap) / CGFloat(rows))
                     viewModel.updateAvailableCellHeight(newCellHeight)
                 }
             }
         }
-        .background(Color(red: 0.12, green: 0.12, blue: 0.13))
+        .background(Color.clear)
     }
 }
